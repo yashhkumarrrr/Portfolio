@@ -1,0 +1,22 @@
+.footer-body {
+    text-align: center;
+    font-family: 'Poppins';
+    background-color: rgb(240, 240, 255);
+}
+
+#footer-link {
+    color: black;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .footer-body {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-body {
+        font-size: 0.8rem;
+    }
+}
