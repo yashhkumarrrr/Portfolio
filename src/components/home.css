@@ -438,19 +438,19 @@
 }
 
 .home-5-section-1 {
-    background-color: rgb(60, 60, 60);
+    background-color: rgb(40, 40, 40);
 }
 
 .home-5-section-2 {
-    background-color: rgb(45, 45, 45);
-}
-
-.home-5-section-3 {
     background-color: rgb(30, 30, 30);
 }
 
+.home-5-section-3 {
+    background-color: rgb(20, 20, 20);
+}
+
 .home-5-section-4 {
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(10, 10, 10);
 }
 
 .home-5-txt {

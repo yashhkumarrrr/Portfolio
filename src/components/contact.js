@@ -2,19 +2,32 @@ import './contact.css';
 import axios from 'axios';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MuiAlert from '@mui/material/Alert';
 import { useState, forwardRef } from 'react';
+import { styled } from '@mui/material/styles';
 import Snackbar from '@mui/material/Snackbar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
+
+const CustomTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+        fontSize: 12,
+        borderRadius: 8,
+        letterSpacing: 1,
+        fontFamily: 'Poppins',
+        backgroundColor: '#000000',
+    },
+}));
 
 const validationSchema = yup.object({
     name: yup
@@ -196,7 +209,7 @@ function Contact() {
 
                 <div className='contact-3'>
                     <div className='contact-3-1'>
-                        <Tooltip title='PortFolio' arrow >
+                        <CustomTooltip title='Portfolio'>
                             <Link
                                 target='_blank'
                                 id='contact-3-section-1'
@@ -214,9 +227,9 @@ function Contact() {
                                     Visit my Portfolio
                                 </div>
                             </Link>
-                        </Tooltip>
+                        </CustomTooltip>
 
-                        <Tooltip title='Gmail' arrow >
+                        <CustomTooltip title='Gmail'>
                             <Link
                                 target='_blank'
                                 id='contact-3-section-2'
@@ -234,11 +247,11 @@ function Contact() {
                                     Contact me on Gmail
                                 </div>
                             </Link>
-                        </Tooltip>
+                        </CustomTooltip>
                     </div>
 
                     <div className='contact-3-1'>
-                        <Tooltip title='LinkedIn' arrow >
+                        <CustomTooltip title='LinkedIn' >
                             <Link
                                 target='_blank'
                                 id='contact-3-section-3'
@@ -256,9 +269,9 @@ function Contact() {
                                     Make me your Connection
                                 </div>
                             </Link>
-                        </Tooltip>
+                        </CustomTooltip>
 
-                        <Tooltip title='GitHub' arrow >
+                        <CustomTooltip title='GitHub' >
                             <Link
                                 target='_blank'
                                 id='contact-3-section-4'
@@ -276,7 +289,7 @@ function Contact() {
                                     Follow me on Github
                                 </div>
                             </Link>
-                        </Tooltip>
+                        </CustomTooltip>
                     </div>
 
                 </div>

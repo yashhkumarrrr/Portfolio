@@ -7,7 +7,7 @@
 
 .header-img {
     height: 100%;
-    padding-left: 40px;
+    margin-left: 40px;
 }
 
 .header-buttons {
@@ -34,7 +34,7 @@
     }
 
     .header-img {
-        padding-left: 30px;
+        margin-left: 30px;
     }
 
     .header-buttons {
@@ -54,7 +54,7 @@
     }
 
     .header-img {
-        padding-left: 20px;
+        margin-left: 20px;
     }
 
     .header-buttons {
@@ -74,7 +74,7 @@
     }
 
     .header-img {
-        padding-left: 10px;
+        margin-left: 10px;
     }
 
     .header-buttons {

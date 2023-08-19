@@ -1,13 +1,26 @@
 import './footer.css';
-import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
+const CustomTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+        fontSize: 12,
+        borderRadius: 8,
+        letterSpacing: 1,
+        fontFamily: 'Poppins',
+        backgroundColor: '#000000',
+    },
+}));
 
 function Footer() {
     return (
         <>
             <div className='footer-body'>
                 Developed by -&nbsp;
-                <Tooltip title='Yash Kumar' arrow>
+                <CustomTooltip title='Yash Kumar'>
                     <Link
                         target='_blank'
                         id='footer-link'
@@ -15,7 +28,7 @@ function Footer() {
                     >
                         Yash
                     </Link>
-                </Tooltip>
+                </CustomTooltip>
             </div>
         </>
     );

@@ -1,6 +1,20 @@
 import './header.css';
+import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Button, Tooltip } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
+const CustomTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+        fontSize: 12,
+        borderRadius: 8,
+        letterSpacing: 1,
+        fontFamily: 'Poppins',
+        backgroundColor: '#000000',
+    },
+}));
 
 function Header() {
 
@@ -10,32 +24,32 @@ function Header() {
         <>
             <div className='header-body'>
                 <Link to='/'>
-                    <Tooltip title='Yash Kumar' arrow>
+                    <CustomTooltip title='Yash Kumar' >
                         <img
                             alt=''
                             src={logo}
                             className='header-img'
                         />
-                    </Tooltip>
+                    </CustomTooltip>
                 </Link>
 
                 <div className='header-buttons'>
                     <Link to='/'>
-                        <Tooltip title='Home' arrow>
+                        <CustomTooltip title='Home' >
                             <Button
                                 id='header-btn-1'
                             >
                                 Home
                             </Button>
-                        </Tooltip>
+                        </CustomTooltip>
                     </Link>
 
                     <Link to='/contact'>
-                        <Tooltip title='Contact' arrow>
+                        <CustomTooltip title='Contact' >
                             <Button id='header-btn-2'>
                                 Contact
                             </Button>
-                        </Tooltip>
+                        </CustomTooltip>
                     </Link>
                 </div>
             </div>
