@@ -1,399 +1,758 @@
 import './home.css';
+import axios from 'axios';
+import * as yup from 'yup';
+import * as React from 'react';
+import { useFormik } from 'formik';
+import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import Timeline from '@mui/lab/Timeline';
-import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
+import MuiAlert from '@mui/material/Alert';
+import { useState, forwardRef } from 'react';
+import Snackbar from '@mui/material/Snackbar';
 import TimelineDot from '@mui/lab/TimelineDot';
-import CodeIcon from '@mui/icons-material/Code';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import EngineeringIcon from '@mui/icons-material/Engineering';
-import DescriptionIcon from '@mui/icons-material/Description';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 
+const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const validationSchema = yup.object({
+    name: yup
+        .string('Enter your Name')
+        .required('Name is Required'),
+    number: yup
+        .number('Enter Contact Number')
+        .required('Contact Number is Required'),
+    message: yup
+        .string('Enter your Message')
+        .required('Message is Required'),
+});
+
 function Home() {
 
-    const profile = require('./images/profile.webp');
-    const picture = require('./images/picture.webp');
-    const laptopWhite = require('./images/laptop-white.webp');
-    const linkedinWhite = require('./images/linkedin-white.webp');
-    const projectDoneWhite = require('./images/project-done-white.webp');
-    const projectCurrentWhite = require('./images/current-project-white.webp');
+    const [open, setOpen] = useState(false);
+
+    const openSnackbar = () => {
+        setOpen(true);
+    };
+
+    const closeSnackbar = (reason) => {
+        if (reason === 'clickAway') {
+            return;
+        }
+        setOpen(false);
+    };
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            number: '',
+            message: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: () => {
+            axios.post('https://64869defbeba6297278ef763.mockapi.io/PortfolioFeedback', {
+                Name: formik.values.name,
+                Number: formik.values.number,
+                Message: formik.values.message,
+            });
+            openSnackbar();
+            formik.resetForm();
+        },
+    });
+
+    const resume = require('./resume.pdf');
+    const djb = require('./images/djb.webp');
+    const gmail = require('./images/gmail.webp');
+    const photo1 = require('./images/photo1.webp');
+    const photo2 = require('./images/photo2.webp');
+    const github = require('./images/github.webp');
+    const IdCard = require('./images/id-card.webp');
+    const appointy = require('./images/appointy.webp');
+    const whatsapp = require('./images/whatsapp.webp');
+    const logoDark = require('./images/logo-dark.webp');
+    const linkedin2 = require('./images/linkedin.webp');
+    const linkedin1 = require('./images/linkedin-2.webp');
+    const projectDone = require('./images/project-done.webp');
+    const projectCurrent = require('./images/current-project.webp');
+
+    const [box, setBox] = React.useState({
+        right: false,
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setBox({ ...box, [anchor]: open });
+    };
 
     return (
         <>
-            <div className='home-body'>
-                <div className='home-1'>
-                    <div className='home-1-section'>
-                        <div className='home-1-1'>
+            {/* Home Page */}
+
+            <div className='homepage'>
+                <div className='header'>
+                    <div className='header-img'>
+                        <a href='#home'>
+                            <img className='header-logo' alt='Logo' src={logoDark} />
+                        </a>
+                    </div>
+
+                    <div id='header-links-tray'>
+                        <a
+                            href='#home'
+                            className='header-links'
+                        >
+                            Home
+                        </a>
+
+                        <a
+                            href='#about'
+                            className='header-links'
+                        >
+                            About
+                        </a>
+
+                        <a
+                            href='#exp'
+                            className='header-links'
+                        >
+                            Experiences
+                        </a>
+
+                        <a
+                            href='#contact'
+                            className='header-links'
+                        >
+                            Contact
+                        </a>
+                    </div>
+
+                    <div className='header-menu-tray'>
+                        {['right'].map((anchor) => (
+                            <React.Fragment key={anchor}>
+                                <div className='header-menu-icon'>
+                                    <IconButton
+                                        onClick={toggleDrawer(anchor, true)}
+                                    >
+                                        <MenuIcon id='header-menu-icon-btn' />
+                                    </IconButton>
+                                </div>
+
+                                <Drawer
+                                    anchor={anchor}
+                                    open={box[anchor]}
+                                    onClose={toggleDrawer(anchor, false)}
+                                >
+                                    <Box
+                                        id='header-tray-box'
+                                        onClick={toggleDrawer(anchor, false)}
+                                        onKeyDown={toggleDrawer(anchor, false)}
+                                        sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 230 }}
+                                    >
+                                        <div>
+                                            <div className='home-tray-links'>
+                                                <a
+                                                    href='#home'
+                                                    id='home-tray-link'
+                                                >
+                                                    Home
+                                                </a>
+                                            </div>
+
+                                            <div className='home-tray-links'>
+                                                <a
+                                                    href='#about'
+                                                    id='home-tray-link'
+                                                >
+                                                    Myself
+                                                </a>
+                                            </div>
+
+                                            <div className='home-tray-links'>
+                                                <a
+                                                    href='#exp'
+                                                    id='home-tray-link'
+                                                >
+                                                    History
+                                                </a>
+                                            </div>
+
+                                            <div className='home-tray-links'>
+                                                <a
+                                                    href='#contact'
+                                                    id='home-tray-link'
+                                                >
+                                                    Contact
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </Box>
+                                </Drawer>
+                            </React.Fragment>
+                        ))}
+                    </div>
+                </div>
+
+                <div id='home'>
+                    <div className='home-div-1'>
+                        <div
+                            id='home-div-1-1'
+                        >
+                            Hello, my name is
+                        </div>
+
+                        <div
+                            id='home-div-1-2'
+                        >
+                            Yash Kumar
+                        </div>
+
+                        <div
+                            id='home-div-1-3'
+                        >
+                            A Creative Web Developer and an Electronics Engineer
+                        </div>
+
+                        <div
+                            id='home-div-1-4'
+                        >
+                            <a
+                                id='home-div-1-4-link'
+                                href='#about'
+                            >
+                                Know More
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className='home-div-2'>
+                        <img src={photo1} id='home-img' alt='YashPhoto' />
+                    </div>
+                </div>
+            </div>
+
+            {/* About */}
+
+            <div id='about'>
+                <div className='about-1-1'>
+                    <span className='about-1-1-txt-1'>ABOUT</span>
+                    &nbsp;
+                    <span className='about-1-1-txt-2'>ME</span>
+                </div>
+
+                <div className='about-club'>
+                    <div className='about-club-div'>
+                        <div className='about-club-1'>
+                            <img src={photo2} id='about-club-img' alt='YashPhoto' />
+                        </div>
+
+                        <div className='about-club-2'>
+                            <div className='about-club-2-1'>
+                                <span className='about-club-2-1-red'>
+                                    Greetings
+                                </span>
+                                &nbsp;for you
+                                <span className='about-club-2-1-red'>
+                                    !!
+                                </span>
+                            </div>
+
+                            <div className='about-club-2-2'>
+                                I'm currently a 4th year B.Tech student at Netaji Subhas University of Technology, Dwarka, Delhi in the field of Electronics and Communication Engineering. A web developer with strong focus on quality of content and perfection.
+                            </div>
+
+                            <div className='about-club-2-3'>
+                                <div className='about-club-2-3-1'>
+                                    <div>
+                                        Birthday
+                                    </div>
+
+                                    <div>
+                                        Phone
+                                    </div>
+
+                                    <div>
+                                        Gmail
+                                    </div>
+
+                                    <div>
+                                        From
+                                    </div>
+
+                                    <div>
+                                        Language
+                                    </div>
+
+                                    <div>
+                                        Freelance
+                                    </div>
+                                </div>
+
+                                <div className='about-club-2-3-2'>
+                                    <div>
+                                        : &nbsp;12th April
+                                    </div>
+
+                                    <div>
+                                        : &nbsp;8826367476
+                                    </div>
+
+                                    <div>
+                                        : &nbsp;yashhkumarrrr
+                                    </div>
+
+                                    <div>
+                                        : &nbsp;Delhi, India
+                                    </div>
+
+                                    <div>
+                                        : &nbsp;English, Hindi
+                                    </div>
+
+                                    <div>
+                                        : &nbsp;Available
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='about-club-2-4'>
+                                <div>
+                                    <a
+                                        href={resume}
+                                        target='_blank'
+                                        rel="noreferrer"
+                                        className='about-form-btn'
+
+                                    >
+                                        Download CV
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div >
+
+            {/* History */}
+
+            < div id='exp' >
+                <div className='exp-section'>
+                    <div className='exp-1-1'>
+                        <span className='exp-1-1-txt-1'>EXPERI</span>
+                        <span className='exp-1-1-txt-2'>ENCE</span>
+                    </div>
+
+                    <div className='timeline-1'>
+                        <Timeline position='alternate'>
+                            <TimelineItem>
+                                <TimelineOppositeContent
+                                    sx={{ m: 'auto 0' }}
+                                >
+                                    <div className='timeline-1-minor-1'>
+                                        Analyst
+                                    </div>
+
+                                    <div className='timeline-1-minor-2'>
+                                        31st Dec 21 - 14th Jan 22
+                                    </div>
+                                </TimelineOppositeContent>
+
+                                <TimelineSeparator>
+                                    <TimelineConnector />
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                        <img src={djb} alt='' id='timeline-1-icon-1' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-1-major-1'>
+                                        Delhi Jal Board
+                                    </div>
+
+                                    <div className='timeline-1-major-2'>
+                                        Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+
+                            <TimelineItem>
+                                <TimelineOppositeContent
+                                    sx={{ m: 'auto 0' }}
+                                >
+                                    <div className='timeline-1-minor-1'>
+                                        Product Development
+                                    </div>
+
+                                    <div className='timeline-1-minor-2'>
+                                        5th Jun 23 - 5th Aug 23
+                                    </div>
+                                </TimelineOppositeContent>
+
+                                <TimelineSeparator>
+                                    <TimelineConnector />
+                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
+                                        <img src={appointy} alt='' id='timeline-1-icon-2' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+                                <TimelineContent sx={{ py: '30px', px: 2 }}>
+                                    <div className='timeline-1-major-1'>
+                                        Appointy India Ltd.
+                                    </div>
+
+                                    <div className='timeline-1-major-2' id='timeline-1-float'>
+                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+                        </Timeline>
+                    </div>
+
+                    <div className='timeline-2'>
+                        <Timeline
+                            sx={{
+                                [`& .${timelineItemClasses.root}:before`]: {
+                                    flex: 0,
+                                    padding: 0,
+                                },
+                            }}
+                        >
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                        <img src={djb} alt='' id='timeline-2-icon-1' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-2-major-1'>
+                                        Delhi Jal Board
+                                    </div>
+
+                                    <div className='timeline-2-minor-1'>
+                                        Analyst
+                                    </div>
+
+                                    <div className='timeline-2-minor-2'>
+                                        31st Dec 21 - 14th Jan 22
+                                    </div>
+
+                                    <div className='timeline-2-major-2'>
+                                        Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
+                                        <img src={appointy} alt='' id='timeline-2-icon-2' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-2-major-1'>
+                                        Appointy India Ltd.
+                                    </div>
+
+                                    <div className='timeline-2-minor-1'>
+                                        Product Development
+                                    </div>
+
+                                    <div className='timeline-2-minor-2'>
+                                        5th Jun 23 - 5th Aug 23
+                                    </div>
+
+                                    <div className='timeline-2-major-2'>
+                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+                        </Timeline>
+                    </div>
+                </div>
+            </div >
+
+            <div className='add-info'>
+                <div className='add-info-section'>
+                    <div className='add-info-section-1'>
+                        <div>
                             <img
                                 alt=''
-                                src={profile}
-                                className='home-1-img'
+                                src={projectDone}
+                                className='add-info-img'
                             />
                         </div>
 
-                        <div className='home-1-2'>
-                            <div className='home-1-text'>
-                                Hi there, and welcome to my portfolio!
-                            </div>
+                        <div className='add-info-txt'>
+                            10+
+                        </div>
 
-                            <div className='home-1-text'>
-                                I'm <span className='home-1-text-1'>Yash</span>
-                            </div>
+                        <div>
+                            Completed Projects
+                        </div>
+                    </div>
 
-                            <div className='home-1-text'>
-                                Front-End Web Developer
-                            </div>
+                    <div className='add-info-section-2'>
+                        <div>
+                            <img
+                                alt=''
+                                src={IdCard}
+                                className='add-info-img'
+                            />
+                        </div>
 
-                            <div className='home-1-text'>
-                                Passionate about Creating Responsive and Functional Work
-                            </div>
+                        <div className='add-info-txt'>
+                            2
+                        </div>
 
-                            <div className='home-1-btn'>
-                                <Link
-                                    target='_blank'
-                                    to='https://drive.google.com/file/d/1PU76cBqbemlkKSxUt4eRqrvYK0udpqOt/view?usp=sharing'
-                                >
-                                    <Button
-                                        id='home-1-link'
-                                        variant='contained'
-                                        startIcon={<DescriptionIcon />}
-                                    >
-                                        Resume
-                                    </Button>
-                                </Link>
-                            </div>
+                        <div>
+                            Internships
                         </div>
                     </div>
                 </div>
 
-                <div className='home-2'>
-                    <div className='home-2-section'>
-                        <div className='home-2-1'>
-                            Let me Introduce Myself
+                <div className='add-info-section'>
+                    <div className='add-info-section-3'>
+                        <div>
+                            <img
+                                alt=''
+                                src={linkedin1}
+                                className='add-info-img'
+                            />
                         </div>
 
-                        <div className='home-2-2'>
-                            <div>
-                                <img
-                                    alt=''
-                                    src={picture}
-                                    className='home-2-2-img'
-                                />
-                            </div>
-
-                            <div className='home-2-2-txt'>
-                                <p>My name is Yash, and I'm built on a strong foundation of HTML and a fairly good CSS. A Tech Enthusiast and a team player who enjoys working with others to create innovative and user-friendly web experiences.</p>
-
-                                <p>I'm a highly motivated and passionate front-end web developer with a strong foundation in HTML and CSS. I have experience developing web applications using the React JavaScript framework.</p>
-
-                                <p>A true sportsperson, a quick learner and an honest man who is committed to work and always gives 100%. You can scroll down to find out more...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='home-3'>
-                    <div className='home-3-section'>
-                        <div className='home-3-1'>
-                            <div className='home-3-head'>
-                                Profile
-                            </div>
-
-                            <div className='home-3-segment'>
-                                <div className='home-3-segment-1'>
-                                    <div><b>Name :</b> &nbsp; Yash Kumar</div>
-                                    <div><b>Age :</b> &nbsp; 22 Years</div>
-                                    <div><b>Freelance :</b> &nbsp; Available</div>
-                                    <div><b>Phone :</b> &nbsp; +91 8826367476</div>
-                                </div>
-
-                                <div className='home-3-segment-2'>
-                                    <div><b>Address :</b> &nbsp; Delhi, India</div>
-                                    <div><b>Nationality :</b> &nbsp; Indian</div>
-                                    <div><b>Language :</b> &nbsp; Hindi, English</div>
-                                    <div><b>Email :</b> &nbsp; yashhkumarrrr@gmail.com</div>
-                                </div>
-                            </div>
+                        <div className='add-info-txt'>
+                            950+
                         </div>
 
-                        <div className='home-3-2'>
-                            <div className='home-3-head'>
-                                Skills
-                            </div>
-
-                            <div className='home-3-segment'>
-                                <div className='home-3-segment-1'>
-                                    <div>Teamwork</div>
-                                    <div>Leadership</div>
-                                    <div>Humour</div>
-                                    <div>Courage</div>
-                                    <div>HyperText Markup Language</div>
-                                    <div>Cascading Style Sheets</div>
-                                    <div>JavaScript Language</div>
-                                    <div>TypeScript Language</div>
-                                </div>
-
-                                <div className='home-3-segment-2'>
-                                    <div>Web Page Optimizations</div>
-                                    <div>Front-End Web Development</div>
-                                    <div>React.JS Framework</div>
-                                    <div>Node.JS Components</div>
-                                    <div>Material UI Components</div>
-                                    <div>BootStrap Components</div>
-                                    <div>Google Analytics</div>
-                                    <div>Product Development</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='home-4'>
-                    <div className='home-4-section'>
-                        <div className='home-4-heading'>
-                            <div className='home-4-heading-1'>
-                                Experience
-                            </div>
-
-                            <div className='home-4-heading-2'>
-                                A variety of experiences
-                            </div>
-                        </div>
-
-                        <div className='home-timeline-1'>
-                            <Timeline position='alternate'>
-
-                                <TimelineItem>
-                                    <TimelineOppositeContent
-                                        variant='body2'
-                                        sx={{ m: 'auto 0' }}
-                                    >
-                                        <div className='home-timeline-1-minor-1'>
-                                            Survey Engineer
-                                        </div>
-
-                                        <div className='home-timeline-1-minor-2'>
-                                            Dec 2021 - Jan 2022
-                                        </div>
-                                    </TimelineOppositeContent>
-
-                                    <TimelineSeparator>
-                                        <TimelineConnector />
-                                        <TimelineDot
-                                            color='success'
-                                        >
-                                            <EngineeringIcon id='home-timeline-1-icon-1' />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-
-                                    <TimelineContent sx={{ py: '30px', px: 2 }}>
-                                        <div className='home-timeline-1-major-1'>
-                                            Delhi Jal Board
-                                        </div>
-
-                                        <div className='home-timeline-1-major-2'>
-                                            This experience has given me a deeper understanding of the work that the DJB does to provide clean water to the people of Delhi. I am now more confident in my ability to perform well in any circumstances and to deal with different kinds of people.
-                                        </div>
-                                    </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem>
-                                    <TimelineOppositeContent
-                                        variant='body2'
-                                        sx={{ m: 'auto 0' }}
-                                    >
-                                        <div className='home-timeline-1-minor-1'>
-                                            React Developer
-                                        </div>
-
-                                        <div className='home-timeline-1-minor-2'>
-                                            Jun 2023 - Aug 2023
-                                        </div>
-                                    </TimelineOppositeContent>
-
-                                    <TimelineSeparator>
-                                        <TimelineConnector />
-                                        <TimelineDot
-                                            color='secondary'
-                                        >
-                                            <CodeIcon id='home-timeline-1-icon-2' />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-                                    <TimelineContent sx={{ py: '30px', px: 2 }}>
-                                        <div className='home-timeline-1-major-1'>
-                                            Appointy India Ltd.
-                                        </div>
-
-                                        <div className='home-timeline-1-major-2' id='home-timeline-1-float'>
-                                            This experience has given me a deep understanding of ReactJS development and has helped me to grow as a software engineer. I am now more confident in my ability to design, develop, and maintain React JavaScript web applications.
-                                        </div>
-                                    </TimelineContent>
-                                </TimelineItem>
-
-                            </Timeline>
-                        </div>
-
-                        <div className='home-timeline-2'>
-                            <Timeline
-                                sx={{
-                                    [`& .${timelineItemClasses.root}:before`]: {
-                                        flex: 0,
-                                        padding: 0,
-                                    },
-                                }}
-                            >
-
-                                <TimelineItem>
-                                    <TimelineSeparator>
-                                        <TimelineConnector />
-                                        <TimelineDot
-                                            color='success'
-                                        >
-                                            <EngineeringIcon id='home-timeline-2-icon-1' />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-
-                                    <TimelineContent>
-                                        <div className='home-timeline-2-1'>
-                                            Delhi Jal Board
-                                        </div>
-
-                                        <div className='home-timeline-2-2'>
-                                            Survey Engineer
-                                        </div>
-
-                                        <div className='home-timeline-2-3'>
-                                            Dec 2021 - Jan 2022
-                                        </div>
-
-                                        <div className='home-timeline-2-4'>
-                                            This experience has given me a deeper understanding of the work that the DJB does to provide clean water to the people of Delhi. I am now more confident in my ability to perform well in any circumstances and to deal with different kinds of people.
-                                        </div>
-                                    </TimelineContent>
-                                </TimelineItem>
-
-                                <TimelineItem>
-                                    <TimelineSeparator>
-                                        <TimelineConnector />
-                                        <TimelineDot
-                                            color='secondary'
-                                        >
-                                            <CodeIcon id='home-timeline-2-icon-2' />
-                                        </TimelineDot>
-                                        <TimelineConnector />
-                                    </TimelineSeparator>
-
-                                    <TimelineContent>
-                                        <div className='home-timeline-2-1'>
-                                            Appointy India Ltd.
-                                        </div>
-
-                                        <div className='home-timeline-2-2'>
-                                            React Developer
-                                        </div>
-
-                                        <div className='home-timeline-2-3'>
-                                            Jun 2023 - Aug 2023
-                                        </div>
-
-                                        <div className='home-timeline-2-4'>
-                                            This experience has given me a deep understanding of ReactJS development and has helped me to grow as a software engineer. I am now more confident in my ability to design, develop, and maintain React JavaScript web applications.
-                                        </div>
-                                    </TimelineContent>
-                                </TimelineItem>
-
-                            </Timeline>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='home-5'>
-
-                    <div className='home-5-section'>
-                        <div className='home-5-section-1'>
-                            <div>
-                                <img
-                                    alt=''
-                                    height='90px'
-                                    src={projectDoneWhite}
-                                />
-                            </div>
-
-                            <div className='home-5-txt'>
-                                5+
-                            </div>
-
-                            <div>
-                                Completed Projects
-                            </div>
-                        </div>
-
-                        <div className='home-5-section-2'>
-                            <div>
-                                <img
-                                    alt=''
-                                    height='90px'
-                                    src={laptopWhite}
-                                />
-                            </div>
-
-                            <div className='home-5-txt'>
-                                2
-                            </div>
-
-                            <div>
-                                Internships
-                            </div>
+                        <div>
+                            Connections
                         </div>
                     </div>
 
-                    <div className='home-5-section'>
-                        <div className='home-5-section-3'>
-                            <div>
-                                <img
-                                    alt=''
-                                    height='90px'
-                                    src={linkedinWhite}
-                                />
-                            </div>
-
-                            <div className='home-5-txt'>
-                                750+
-                            </div>
-
-                            <div>
-                                Connections
-                            </div>
+                    <div className='add-info-section-4'>
+                        <div>
+                            <img
+                                alt=''
+                                src={projectCurrent}
+                                className='add-info-img'
+                            />
                         </div>
 
-                        <div className='home-5-section-4'>
-                            <div>
-                                <img
-                                    alt=''
-                                    height='90px'
-                                    src={projectCurrentWhite}
-                                />
-                            </div>
+                        <div className='add-info-txt'>
+                            5+
+                        </div>
 
-                            <div className='home-5-txt'>
-                                5+
-                            </div>
-
-                            <div>
-                                Current Projects
-                            </div>
+                        <div>
+                            Current Projects
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Contact */}
+
+            <div id='contact'>
+                <div className='contact-1'>
+                    <div className='contact-1-1'>
+                        <span className='contact-1-1-txt-1'>GET IN</span>
+                        &nbsp;
+                        <span className='contact-1-1-txt-2'>TOUCH</span>
+                    </div>
+
+                    <div className='contact-1-2'>
+                        <div className='contact-text'>
+                            <div className='contact-text-head'>
+                                DON'T BE SHY!
+                            </div>
+
+                            <div className='contact-text-content'>
+                                <p>Want to build a Responsive and Functional Personal Portfolio Website or a Business Website for your work? Just let me know, I'm here to help</p>
+
+                                <p>Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or oppurtunities to be part of your vision</p>
+
+                                <p>Got any suggestions or feedback about anything that I provide? Your valuable suggestions will help me a lot to improve my skills and experience</p>
+                            </div>
+                        </div>
+
+                        <form onSubmit={formik.handleSubmit} className='contact-form'>
+                            <div>
+                                <div>
+                                    <div className='contact-form-input-div'>
+                                        <input
+                                            name='name'
+                                            autoComplete='off'
+                                            value={formik.values.name}
+                                            onBlur={formik.handleBlur}
+                                            className='contact-form-input'
+                                            onChange={formik.handleChange}
+                                            placeholder='Enter Your Name *'
+                                        />
+                                        {formik.touched.name &&
+                                            <div className='contact-form-error'>{formik.errors.name}</div>
+                                        }
+                                    </div>
+
+                                    <div className='contact-form-input-div'>
+                                        <input
+                                            name='number'
+                                            type='number'
+                                            autoComplete='off'
+                                            onBlur={formik.handleBlur}
+                                            value={formik.values.number}
+                                            className='contact-form-input'
+                                            onChange={formik.handleChange}
+                                            placeholder='Enter Contact Number *'
+                                        />
+                                        {formik.touched.number &&
+                                            <div className='contact-form-error'>{formik.errors.number}</div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div className='contact-form-input-div'>
+                                    <textarea
+                                        rows={6}
+                                        name='message'
+                                        autoComplete='off'
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.message}
+                                        className='contact-form-input'
+                                        onChange={formik.handleChange}
+                                        placeholder='Type your Message *'
+                                    />
+                                    {formik.touched.message &&
+                                        <div className='contact-form-error'>{formik.errors.message}</div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div>
+                                <button
+                                    type='submit'
+                                    className='contact-form-btn'
+                                >
+                                    <div className='contact-form-text'>
+                                        Send
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div className='contact-2'>
+                    <div className='contact-2-1'>
+                        <Link
+                            target='_blank'
+                            id='contact-2-section-1'
+                            className='contact-2-section'
+                            to='mailto:yashhkumarrrr@gmail.com'
+                        >
+                            <div className='contact-link-img'>
+                                <img
+                                    src={gmail}
+                                    alt='GmailLogo'
+                                    className='contact-link-img'
+                                />
+                            </div>
+                            <div className='contact-link-txt'>
+                                Reach me on Email
+                            </div>
+                        </Link>
+
+                        <Link
+                            target='_blank'
+                            id='contact-2-section-2'
+                            className='contact-2-section'
+                            to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
+                        >
+                            <div className='contact-link-img'>
+                                <img
+                                    src={whatsapp}
+                                    alt='WhatsAppLogo'
+                                    className='contact-link-img'
+                                />
+                            </div>
+                            <div className='contact-link-txt'>
+                                Contact me on WhatsApp
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className='contact-2-1'>
+                        <Link
+                            target='_blank'
+                            id='contact-2-section-3'
+                            className='contact-2-section'
+                            to='https://www.linkedin.com/in/yashhkumarrrr'
+                        >
+                            <div className='contact-link-img'>
+                                <img
+                                    src={linkedin2}
+                                    alt='LinkedInLogo'
+                                    className='contact-link-img'
+                                />
+                            </div>
+
+                            <div className='contact-link-txt'>
+                                Make me your Connection
+                            </div>
+                        </Link>
+
+                        <Link
+                            target='_blank'
+                            id='contact-2-section-4'
+                            className='contact-2-section'
+                            to='https://www.github.com/yashhkumarrrr'
+                        >
+                            <div className='contact-link-img'>
+                                <img
+                                    src={github}
+                                    alt='GitHubLogo'
+                                    className='contact-link-img'
+                                />
+                            </div>
+                            <div className='contact-link-txt'>
+                                Follow me on Github
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
+            <div className='footer'>
+                Developed by -&nbsp;
+                <Link
+                    target='_blank'
+                    id='footer-link'
+                    to='https://yashhkumarrrr.netlify.app'
+                >
+                    Yash
+                </Link>
+            </div>
+
+            <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
+                <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%', fontFamily: 'Poppins', fontSize: '14px', fontWeight: '300' }}>
+                    Your message is successfully delivered!
+                </Alert>
+            </Snackbar>
         </>
-    );
+    )
 }
 
 export default Home;
