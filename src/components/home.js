@@ -96,260 +96,262 @@ function Home() {
 
     return (
         <>
-            {/* Home Page */}
+            <div className='WebApp'>
+                {/* Home Page */}
 
-            <div className='homepage'>
-                <div className='header'>
-                    <div className='header-img'>
-                        <a href='#home'>
-                            <img className='header-logo' alt='Logo' src={logoDark} />
-                        </a>
-                    </div>
-
-                    <div id='header-links-tray'>
-                        <a
-                            href='#home'
-                            className='header-links'
-                        >
-                            Home
-                        </a>
-
-                        <a
-                            href='#about'
-                            className='header-links'
-                        >
-                            About
-                        </a>
-
-                        <a
-                            href='#exp'
-                            className='header-links'
-                        >
-                            Experiences
-                        </a>
-
-                        <a
-                            href='#contact'
-                            className='header-links'
-                        >
-                            Contact
-                        </a>
-                    </div>
-
-                    <div className='header-menu-tray'>
-                        {['right'].map((anchor) => (
-                            <React.Fragment key={anchor}>
-                                <div className='header-menu-icon'>
-                                    <IconButton
-                                        onClick={toggleDrawer(anchor, true)}
-                                    >
-                                        <MenuIcon id='header-menu-icon-btn' />
-                                    </IconButton>
-                                </div>
-
-                                <Drawer
-                                    anchor={anchor}
-                                    open={box[anchor]}
-                                    onClose={toggleDrawer(anchor, false)}
-                                >
-                                    <Box
-                                        id='header-tray-box'
-                                        onClick={toggleDrawer(anchor, false)}
-                                        onKeyDown={toggleDrawer(anchor, false)}
-                                        sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 230 }}
-                                    >
-                                        <div>
-                                            <div className='home-tray-links'>
-                                                <a
-                                                    href='#home'
-                                                    id='home-tray-link'
-                                                >
-                                                    Home
-                                                </a>
-                                            </div>
-
-                                            <div className='home-tray-links'>
-                                                <a
-                                                    href='#about'
-                                                    id='home-tray-link'
-                                                >
-                                                    Myself
-                                                </a>
-                                            </div>
-
-                                            <div className='home-tray-links'>
-                                                <a
-                                                    href='#exp'
-                                                    id='home-tray-link'
-                                                >
-                                                    History
-                                                </a>
-                                            </div>
-
-                                            <div className='home-tray-links'>
-                                                <a
-                                                    href='#contact'
-                                                    id='home-tray-link'
-                                                >
-                                                    Contact
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </Box>
-                                </Drawer>
-                            </React.Fragment>
-                        ))}
-                    </div>
-                </div>
-
-                <div id='home'>
-                    <div className='home-div-1'>
-                        <div
-                            id='home-div-1-1'
-                        >
-                            Hello, my name is
-                        </div>
-
-                        <div
-                            id='home-div-1-2'
-                        >
-                            Yash Kumar
-                        </div>
-
-                        <div
-                            id='home-div-1-3'
-                        >
-                            A Creative Web Developer and an Electronics Engineer
-                        </div>
-
-                        <div
-                            id='home-div-1-4'
-                        >
-                            <a
-                                id='home-div-1-4-link'
-                                href='#about'
-                            >
-                                Know More
+                <div className='homepage'>
+                    <div className='header'>
+                        <div className='header-img'>
+                            <a href='#home' aria-label="Home">
+                                <img className='header-logo' alt='Logo' src={logoDark} />
                             </a>
                         </div>
-                    </div>
 
-                    <div className='home-div-2'>
-                        <img src={photo1} id='home-img' alt='YashPhoto' />
-                    </div>
-                </div>
-            </div>
+                        <div id='header-links-tray'>
+                            <a
+                                href='#home'
+                                className='header-links'
+                            >
+                                Home
+                            </a>
 
-            {/* About */}
+                            <a
+                                href='#about'
+                                className='header-links'
+                            >
+                                About
+                            </a>
 
-            <div id='about'>
-                <div className='about-1-1'>
-                    <span className='about-1-1-txt-1'>ABOUT</span>
-                    &nbsp;
-                    <span className='about-1-1-txt-2'>ME</span>
-                </div>
+                            <a
+                                href='#exp'
+                                className='header-links'
+                            >
+                                Experiences
+                            </a>
 
-                <div className='about-club'>
-                    <div className='about-club-div'>
-                        <div className='about-club-1'>
-                            <img src={photo2} id='about-club-img' alt='YashPhoto' />
+                            <a
+                                href='#contact'
+                                className='header-links'
+                            >
+                                Contact
+                            </a>
                         </div>
 
-                        <div className='about-club-2'>
-                            <div className='about-club-2-1'>
-                                <span className='about-club-2-1-red'>
-                                    Greetings
-                                </span>
-                                &nbsp;for you
-                                <span className='about-club-2-1-red'>
-                                    !!
-                                </span>
-                            </div>
-
-                            <div className='about-club-2-2'>
-                                I'm currently a 4th year B.Tech student at Netaji Subhas University of Technology, Dwarka, Delhi in the field of Electronics and Communication Engineering. A web developer with strong focus on quality of content and perfection.
-                            </div>
-
-                            <div className='about-club-2-3'>
-                                <div className='about-club-2-3-1'>
-                                    <div>
-                                        Birthday
+                        <div className='header-menu-tray'>
+                            {['right'].map((anchor) => (
+                                <React.Fragment key={anchor}>
+                                    <div className='header-menu-icon'>
+                                        <IconButton
+                                            aria-label="Menu"
+                                            id='header-menu-btn'
+                                            onClick={toggleDrawer(anchor, true)}
+                                        >
+                                            <MenuIcon id='header-menu-icon-btn' />
+                                        </IconButton>
                                     </div>
 
-                                    <div>
-                                        Phone
-                                    </div>
-
-                                    <div>
-                                        Gmail
-                                    </div>
-
-                                    <div>
-                                        From
-                                    </div>
-
-                                    <div>
-                                        Language
-                                    </div>
-
-                                    <div>
-                                        Freelance
-                                    </div>
-                                </div>
-
-                                <div className='about-club-2-3-2'>
-                                    <div>
-                                        : &nbsp;12th April
-                                    </div>
-
-                                    <div>
-                                        : &nbsp;8826367476
-                                    </div>
-
-                                    <div>
-                                        : &nbsp;yashhkumarrrr
-                                    </div>
-
-                                    <div>
-                                        : &nbsp;Delhi, India
-                                    </div>
-
-                                    <div>
-                                        : &nbsp;English, Hindi
-                                    </div>
-
-                                    <div>
-                                        : &nbsp;Available
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className='about-club-2-4'>
-                                <div>
-                                    <a
-                                        href={resume}
-                                        target='_blank'
-                                        rel="noreferrer"
-                                        className='about-form-btn'
-
+                                    <Drawer
+                                        anchor={anchor}
+                                        open={box[anchor]}
+                                        onClose={toggleDrawer(anchor, false)}
                                     >
-                                        Download CV
-                                    </a>
-                                </div>
+                                        <Box
+                                            id='header-tray-box'
+                                            onClick={toggleDrawer(anchor, false)}
+                                            onKeyDown={toggleDrawer(anchor, false)}
+                                            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 200 }}
+                                        >
+                                            <div>
+                                                <div className='home-tray-links'>
+                                                    <a
+                                                        href='#home'
+                                                        id='home-tray-link'
+                                                    >
+                                                        Home
+                                                    </a>
+                                                </div>
 
+                                                <div className='home-tray-links'>
+                                                    <a
+                                                        href='#about'
+                                                        id='home-tray-link'
+                                                    >
+                                                        About
+                                                    </a>
+                                                </div>
+
+                                                <div className='home-tray-links'>
+                                                    <a
+                                                        href='#exp'
+                                                        id='home-tray-link'
+                                                    >
+                                                        Experiences
+                                                    </a>
+                                                </div>
+
+                                                <div className='home-tray-links'>
+                                                    <a
+                                                        href='#contact'
+                                                        id='home-tray-link'
+                                                    >
+                                                        Contact
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </Box>
+                                    </Drawer>
+                                </React.Fragment>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div id='home'>
+                        <div className='home-div-1'>
+                            <div
+                                id='home-div-1-1'
+                            >
+                                Hello, my name is
                             </div>
+
+                            <div
+                                id='home-div-1-2'
+                            >
+                                Yash Kumar
+                            </div>
+
+                            <div
+                                id='home-div-1-3'
+                            >
+                                A Creative Web Developer and an Electronics Engineer
+                            </div>
+
+                            <div
+                                id='home-div-1-4'
+                            >
+                                <a
+                                    id='home-div-1-4-link'
+                                    href='#about'
+                                >
+                                    Know More
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className='home-div-2'>
+                            <img src={photo1} id='home-img' alt='YashPhoto' />
                         </div>
                     </div>
                 </div>
-            </div >
 
-            {/* History */}
+                {/* About */}
 
-            < div id='exp' >
-                <div className='exp-section'>
-                    <div className='exp-1-1'>
-                        <span className='exp-1-1-txt-1'>EXPERI</span>
-                        <span className='exp-1-1-txt-2'>ENCE</span>
+                <div id='about'>
+                    <div className='about-head'>
+                        <span className='about-head-txt-1'>ABOUT</span>
+                        &nbsp;
+                        <span className='about-head-txt-2'>ME</span>
+                    </div>
+
+                    <div className='about-body'>
+                        <div className='about-body-div'>
+                            <div className='about-body-1'>
+                                <img src={photo2} id='about-body-img' alt='YashPhoto' />
+                            </div>
+
+                            <div className='about-body-2'>
+                                <div className='about-body-2-1'>
+                                    <span className='about-body-2-1-red'>
+                                        Greetings
+                                    </span>
+                                    &nbsp;for you
+                                    <span className='about-body-2-1-red'>
+                                        !!
+                                    </span>
+                                </div>
+
+                                <div className='about-body-2-2'>
+                                    I'm currently a 4th year B.Tech student at Netaji Subhas University of Technology, Dwarka, Delhi in the field of Electronics and Communication Engineering. A web developer with strong focus on quality of content and perfection.
+                                </div>
+
+                                <div className='about-body-2-3'>
+                                    <div className='about-body-2-3-1'>
+                                        <div>
+                                            Birthday
+                                        </div>
+
+                                        <div>
+                                            Phone
+                                        </div>
+
+                                        <div>
+                                            Gmail
+                                        </div>
+
+                                        <div>
+                                            From
+                                        </div>
+
+                                        <div>
+                                            Language
+                                        </div>
+
+                                        <div>
+                                            Freelance
+                                        </div>
+                                    </div>
+
+                                    <div className='about-body-2-3-2'>
+                                        <div>
+                                            : &nbsp;12th April
+                                        </div>
+
+                                        <div>
+                                            : &nbsp;8826367476
+                                        </div>
+
+                                        <div>
+                                            : &nbsp;yashhkumarrrr
+                                        </div>
+
+                                        <div>
+                                            : &nbsp;Delhi, India
+                                        </div>
+
+                                        <div>
+                                            : &nbsp;English, Hindi
+                                        </div>
+
+                                        <div>
+                                            : &nbsp;Available
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='about-body-2-4'>
+                                    <div>
+                                        <a
+                                            href={resume}
+                                            target='_blank'
+                                            rel="noreferrer"
+                                            className='about-resume-btn'
+
+                                        >
+                                            Download CV
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div >
+
+                {/* Experience */}
+
+                < div id='exp' >
+                    <div className='exp-head'>
+                        <span className='exp-head-txt-1'>EXPERI</span>
+                        <span className='exp-head-txt-2'>ENCE</span>
                     </div>
 
                     <div className='timeline-1'>
@@ -483,95 +485,93 @@ function Home() {
                             </TimelineItem>
                         </Timeline>
                     </div>
+                </div >
+
+                <div className='exp-info'>
+                    <div className='exp-info-section'>
+                        <div className='exp-info-section-1'>
+                            <div>
+                                <img
+                                    alt=''
+                                    src={projectDone}
+                                    className='exp-info-img'
+                                />
+                            </div>
+
+                            <div className='exp-info-txt'>
+                                10+
+                            </div>
+
+                            <div>
+                                Completed Projects
+                            </div>
+                        </div>
+
+                        <div className='exp-info-section-2'>
+                            <div>
+                                <img
+                                    alt=''
+                                    src={IdCard}
+                                    className='exp-info-img'
+                                />
+                            </div>
+
+                            <div className='exp-info-txt'>
+                                2
+                            </div>
+
+                            <div>
+                                Internships
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='exp-info-section'>
+                        <div className='exp-info-section-3'>
+                            <div>
+                                <img
+                                    alt=''
+                                    src={linkedin1}
+                                    className='exp-info-img'
+                                />
+                            </div>
+
+                            <div className='exp-info-txt'>
+                                950+
+                            </div>
+
+                            <div>
+                                Connections
+                            </div>
+                        </div>
+
+                        <div className='exp-info-section-4'>
+                            <div>
+                                <img
+                                    alt=''
+                                    src={projectCurrent}
+                                    className='exp-info-img'
+                                />
+                            </div>
+
+                            <div className='exp-info-txt'>
+                                5+
+                            </div>
+
+                            <div>
+                                Current Projects
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div >
 
-            <div className='add-info'>
-                <div className='add-info-section'>
-                    <div className='add-info-section-1'>
-                        <div>
-                            <img
-                                alt=''
-                                src={projectDone}
-                                className='add-info-img'
-                            />
-                        </div>
+                {/* Contact */}
 
-                        <div className='add-info-txt'>
-                            10+
-                        </div>
-
-                        <div>
-                            Completed Projects
-                        </div>
-                    </div>
-
-                    <div className='add-info-section-2'>
-                        <div>
-                            <img
-                                alt=''
-                                src={IdCard}
-                                className='add-info-img'
-                            />
-                        </div>
-
-                        <div className='add-info-txt'>
-                            2
-                        </div>
-
-                        <div>
-                            Internships
-                        </div>
-                    </div>
-                </div>
-
-                <div className='add-info-section'>
-                    <div className='add-info-section-3'>
-                        <div>
-                            <img
-                                alt=''
-                                src={linkedin1}
-                                className='add-info-img'
-                            />
-                        </div>
-
-                        <div className='add-info-txt'>
-                            950+
-                        </div>
-
-                        <div>
-                            Connections
-                        </div>
-                    </div>
-
-                    <div className='add-info-section-4'>
-                        <div>
-                            <img
-                                alt=''
-                                src={projectCurrent}
-                                className='add-info-img'
-                            />
-                        </div>
-
-                        <div className='add-info-txt'>
-                            5+
-                        </div>
-
-                        <div>
-                            Current Projects
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Contact */}
-
-            <div id='contact'>
-                <div className='contact-1'>
-                    <div className='contact-1-1'>
-                        <span className='contact-1-1-txt-1'>GET IN</span>
+                <div id='contact'>
+                    <div className='contact-head'>
+                        <span className='contact-head-txt-1'>GET IN</span>
                         &nbsp;
-                        <span className='contact-1-1-txt-2'>TOUCH</span>
+                        <span className='contact-head-txt-2'>TOUCH</span>
                     </div>
 
                     <div className='contact-1-2'>
@@ -591,37 +591,35 @@ function Home() {
 
                         <form onSubmit={formik.handleSubmit} className='contact-form'>
                             <div>
-                                <div>
-                                    <div className='contact-form-input-div'>
-                                        <input
-                                            name='name'
-                                            autoComplete='off'
-                                            value={formik.values.name}
-                                            onBlur={formik.handleBlur}
-                                            className='contact-form-input'
-                                            onChange={formik.handleChange}
-                                            placeholder='Enter Your Name *'
-                                        />
-                                        {formik.touched.name &&
-                                            <div className='contact-form-error'>{formik.errors.name}</div>
-                                        }
-                                    </div>
+                                <div className='contact-form-input-div'>
+                                    <input
+                                        name='name'
+                                        autoComplete='off'
+                                        value={formik.values.name}
+                                        onBlur={formik.handleBlur}
+                                        className='contact-form-input'
+                                        onChange={formik.handleChange}
+                                        placeholder='Enter Your Name *'
+                                    />
+                                    {formik.touched.name &&
+                                        <div className='contact-form-error'>{formik.errors.name}</div>
+                                    }
+                                </div>
 
-                                    <div className='contact-form-input-div'>
-                                        <input
-                                            name='number'
-                                            type='number'
-                                            autoComplete='off'
-                                            onBlur={formik.handleBlur}
-                                            value={formik.values.number}
-                                            className='contact-form-input'
-                                            onChange={formik.handleChange}
-                                            placeholder='Enter Contact Number *'
-                                        />
-                                        {formik.touched.number &&
-                                            <div className='contact-form-error'>{formik.errors.number}</div>
-                                        }
-                                    </div>
+                                <div className='contact-form-input-div'>
+                                    <input
+                                        name='number'
+                                        type='number'
+                                        autoComplete='off'
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.number}
+                                        className='contact-form-input'
+                                        onChange={formik.handleChange}
+                                        placeholder='Enter Contact Number *'
+                                    />
+                                    {formik.touched.number &&
+                                        <div className='contact-form-error'>{formik.errors.number}</div>
+                                    }
                                 </div>
 
                                 <div className='contact-form-input-div'>
@@ -646,111 +644,109 @@ function Home() {
                                     type='submit'
                                     className='contact-form-btn'
                                 >
-                                    <div className='contact-form-text'>
-                                        Send
-                                    </div>
+                                    Send Message
                                 </button>
                             </div>
                         </form>
                     </div>
+
+                    <div className='contact-info'>
+                        <div className='contact-info-1'>
+                            <Link
+                                target='_blank'
+                                id='contact-info-section-1'
+                                className='contact-info-section'
+                                to='mailto:yashhkumarrrr@gmail.com'
+                            >
+                                <div>
+                                    <img
+                                        src={gmail}
+                                        alt='GmailLogo'
+                                        className='contact-info-link-img'
+                                    />
+                                </div>
+                                <div className='contact-info-link-txt'>
+                                    Reach me on Email
+                                </div>
+                            </Link>
+
+                            <Link
+                                target='_blank'
+                                id='contact-info-section-2'
+                                className='contact-info-section'
+                                to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
+                            >
+                                <div>
+                                    <img
+                                        src={whatsapp}
+                                        alt='WhatsAppLogo'
+                                        className='contact-info-link-img'
+                                    />
+                                </div>
+                                <div className='contact-info-link-txt'>
+                                    Contact me on WhatsApp
+                                </div>
+                            </Link>
+                        </div>
+
+                        <div className='contact-info-1'>
+                            <Link
+                                target='_blank'
+                                id='contact-info-section-3'
+                                className='contact-info-section'
+                                to='https://www.linkedin.com/in/yashhkumarrrr'
+                            >
+                                <div>
+                                    <img
+                                        src={linkedin2}
+                                        alt='LinkedInLogo'
+                                        className='contact-info-link-img'
+                                    />
+                                </div>
+
+                                <div className='contact-info-link-txt'>
+                                    Make me your Connection
+                                </div>
+                            </Link>
+
+                            <Link
+                                target='_blank'
+                                id='contact-info-section-4'
+                                className='contact-info-section'
+                                to='https://www.github.com/yashhkumarrrr'
+                            >
+                                <div>
+                                    <img
+                                        src={github}
+                                        alt='GitHubLogo'
+                                        className='contact-info-link-img'
+                                    />
+                                </div>
+                                <div className='contact-info-link-txt'>
+                                    Follow me on Github
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
 
-                <div className='contact-2'>
-                    <div className='contact-2-1'>
-                        <Link
-                            target='_blank'
-                            id='contact-2-section-1'
-                            className='contact-2-section'
-                            to='mailto:yashhkumarrrr@gmail.com'
-                        >
-                            <div className='contact-link-img'>
-                                <img
-                                    src={gmail}
-                                    alt='GmailLogo'
-                                    className='contact-link-img'
-                                />
-                            </div>
-                            <div className='contact-link-txt'>
-                                Reach me on Email
-                            </div>
-                        </Link>
-
-                        <Link
-                            target='_blank'
-                            id='contact-2-section-2'
-                            className='contact-2-section'
-                            to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
-                        >
-                            <div className='contact-link-img'>
-                                <img
-                                    src={whatsapp}
-                                    alt='WhatsAppLogo'
-                                    className='contact-link-img'
-                                />
-                            </div>
-                            <div className='contact-link-txt'>
-                                Contact me on WhatsApp
-                            </div>
-                        </Link>
-                    </div>
-
-                    <div className='contact-2-1'>
-                        <Link
-                            target='_blank'
-                            id='contact-2-section-3'
-                            className='contact-2-section'
-                            to='https://www.linkedin.com/in/yashhkumarrrr'
-                        >
-                            <div className='contact-link-img'>
-                                <img
-                                    src={linkedin2}
-                                    alt='LinkedInLogo'
-                                    className='contact-link-img'
-                                />
-                            </div>
-
-                            <div className='contact-link-txt'>
-                                Make me your Connection
-                            </div>
-                        </Link>
-
-                        <Link
-                            target='_blank'
-                            id='contact-2-section-4'
-                            className='contact-2-section'
-                            to='https://www.github.com/yashhkumarrrr'
-                        >
-                            <div className='contact-link-img'>
-                                <img
-                                    src={github}
-                                    alt='GitHubLogo'
-                                    className='contact-link-img'
-                                />
-                            </div>
-                            <div className='contact-link-txt'>
-                                Follow me on Github
-                            </div>
-                        </Link>
-                    </div>
+                <div className='footer'>
+                    Developed by -&nbsp;
+                    <Link
+                        target='_blank'
+                        id='footer-link'
+                        to='https://yashhkumarrrr.netlify.app'
+                    >
+                        Yash
+                    </Link>
                 </div>
-            </div>
 
-            <div className='footer'>
-                Developed by -&nbsp;
-                <Link
-                    target='_blank'
-                    id='footer-link'
-                    to='https://yashhkumarrrr.netlify.app'
-                >
-                    Yash
-                </Link>
+                <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
+                    <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%', fontFamily: 'Poppins', fontSize: '14px', fontWeight: '300' }}>
+                        Your message is successfully delivered!
+                    </Alert>
+                </Snackbar>
             </div>
-
-            <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
-                <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%', fontFamily: 'Poppins', fontSize: '14px', fontWeight: '300' }}>
-                    Your message is successfully delivered!
-                </Alert>
-            </Snackbar>
         </>
     )
 }
