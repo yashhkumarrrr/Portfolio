@@ -361,29 +361,29 @@ function Home() {
                                     sx={{ m: 'auto 0' }}
                                 >
                                     <div className='timeline-1-minor-1'>
-                                        Analyst
+                                        Product Development
                                     </div>
 
                                     <div className='timeline-1-minor-2'>
-                                        31st Dec 21 - 14th Jan 22
+                                        5<sup>th</sup> Jun 23 - 5<sup>th</sup> Aug 23
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
                                     <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
-                                        <img src={djb} alt='' id='timeline-1-icon-1' />
+                                        <img src={appointy} alt='' id='timeline-1-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
 
                                 <TimelineContent sx={{ py: '20px', px: 2 }}>
                                     <div className='timeline-1-major-1'>
-                                        Delhi Jal Board
+                                        Appointy India Ltd.
                                     </div>
 
                                     <div className='timeline-1-major-2'>
-                                        Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
+                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -393,28 +393,28 @@ function Home() {
                                     sx={{ m: 'auto 0' }}
                                 >
                                     <div className='timeline-1-minor-1'>
-                                        Product Development
+                                        Analyst
                                     </div>
 
                                     <div className='timeline-1-minor-2'>
-                                        5th Jun 23 - 5th Aug 23
+                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
                                     <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
-                                        <img src={appointy} alt='' id='timeline-1-icon-2' />
+                                        <img src={djb} alt='' id='timeline-1-icon-2' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
                                 <TimelineContent sx={{ py: '30px', px: 2 }}>
                                     <div className='timeline-1-major-1'>
-                                        Appointy India Ltd.
+                                        Delhi Jal board
                                     </div>
 
                                     <div className='timeline-1-major-2' id='timeline-1-float'>
-                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
+                                        Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -433,7 +433,34 @@ function Home() {
                             <TimelineItem>
                                 <TimelineSeparator>
                                     <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
-                                        <img src={djb} alt='' id='timeline-2-icon-1' />
+                                        <img src={appointy} alt='' id='timeline-2-icon-1' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-2-major-1'>
+                                        Appointy India Ltd.
+                                    </div>
+
+                                    <div className='timeline-2-minor-1'>
+                                        Product Developement
+                                    </div>
+
+                                    <div className='timeline-2-minor-2'>
+                                        5<sup>th</sup> Jun 23 - 5<sup>th</sup> Aug 23
+                                    </div>
+
+                                    <div className='timeline-2-major-2'>
+                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
+                                        <img src={djb} alt='' id='timeline-2-icon-2' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
@@ -448,38 +475,11 @@ function Home() {
                                     </div>
 
                                     <div className='timeline-2-minor-2'>
-                                        31st Dec 21 - 14th Jan 22
+                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
                                     </div>
 
                                     <div className='timeline-2-major-2'>
                                         Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
-                                        <img src={appointy} alt='' id='timeline-2-icon-2' />
-                                    </TimelineDot>
-                                    <TimelineConnector />
-                                </TimelineSeparator>
-
-                                <TimelineContent sx={{ py: '20px', px: 2 }}>
-                                    <div className='timeline-2-major-1'>
-                                        Appointy India Ltd.
-                                    </div>
-
-                                    <div className='timeline-2-minor-1'>
-                                        Product Development
-                                    </div>
-
-                                    <div className='timeline-2-minor-2'>
-                                        5th Jun 23 - 5th Aug 23
-                                    </div>
-
-                                    <div className='timeline-2-major-2'>
-                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
