@@ -7,15 +7,18 @@ import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import Timeline from '@mui/lab/Timeline';
 import Drawer from '@mui/material/Drawer';
+import Switch from '@mui/material/Switch';
 import MuiAlert from '@mui/material/Alert';
 import { useState, forwardRef } from 'react';
 import Snackbar from '@mui/material/Snackbar';
+import { styled } from '@mui/material/styles';
 import TimelineDot from '@mui/lab/TimelineDot';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 
@@ -35,7 +38,52 @@ const validationSchema = yup.object({
         .required('Message is Required'),
 });
 
-function Home() {
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+    width: 61,
+    height: 34,
+    padding: 7,
+    '& .MuiSwitch-switchBase': {
+        margin: 1,
+        padding: 0,
+        transform: 'translateX(6px)',
+        '&.Mui-checked': {
+            color: '#fff',
+            transform: 'translateX(22px)',
+            '& .MuiSwitch-thumb:before': {
+                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+                    '#fff',
+                )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`,
+            },
+            '& + .MuiSwitch-track': {
+                opacity: 1,
+                backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#E0E0E0',
+            },
+        },
+    },
+    '& .MuiSwitch-thumb': {
+        backgroundColor: theme.palette.mode === 'dark' ? '#77589B' : '#ff2c2c',
+        width: 32,
+        height: 32,
+        '&::before': {
+            content: "''",
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
+                '#fff',
+            )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
+        },
+    },
+    '& .MuiSwitch-track': {
+        opacity: 1,
+        backgroundColor: theme.palette.mode === 'dark' ? '#ff0000' : '#616161',
+        borderRadius: 20 / 2,
+    },
+}));
+
+function Home(props) {
 
     const [open, setOpen] = useState(false);
 
@@ -58,32 +106,38 @@ function Home() {
         },
         validationSchema: validationSchema,
         onSubmit: () => {
-            axios.post('https://64869defbeba6297278ef763.mockapi.io/PortfolioFeedback', {
-                Name: formik.values.name,
-                Number: formik.values.number,
-                Message: formik.values.message,
-            });
-            openSnackbar();
-            formik.resetForm();
+            try {
+                axios.post('https://64869defbeba6297278ef763.mockapi.io/PortfolioFeedback', {
+                    Name: formik.values.name,
+                    Number: formik.values.number,
+                    Message: formik.values.message,
+                });
+                openSnackbar();
+                formik.resetForm();
+            }
+            catch (e) {
+                console.log(e)
+            }
         },
     });
 
-    const resume = require('./resume.pdf');
-    const djb = require('./images/djb.webp');
-    const gmail = require('./images/gmail.webp');
-    const photo1 = require('./images/photo1.webp');
-    const photo2 = require('./images/photo2.webp');
-    const github = require('./images/github.webp');
-    const IdCard = require('./images/id-card.webp');
-    const appointy = require('./images/appointy.webp');
-    const whatsapp = require('./images/whatsapp.webp');
-    const logoDark = require('./images/logo-dark.webp');
-    const linkedin2 = require('./images/linkedin.webp');
-    const linkedin1 = require('./images/linkedin-2.webp');
-    const projectDone = require('./images/project-done.webp');
-    const projectCurrent = require('./images/current-project.webp');
+    const resume = require('./resume.pdf')
+    const djb = require('./images/djb.webp')
+    const gmail = require('./images/gmail.webp')
+    const photo1 = require('./images/photo1.webp')
+    const photo2 = require('./images/photo2.webp')
+    const github = require('./images/github.webp')
+    const IdCard = require('./images/id-card.webp')
+    const appointy = require('./images/appointy.webp')
+    const whatsapp = require('./images/whatsapp.webp')
+    const logoDark = require('./images/logo-dark.webp')
+    const linkedin2 = require('./images/linkedin.webp')
+    const logoLight = require('./images/logo-light.webp')
+    const linkedin1 = require('./images/linkedin-2.webp')
+    const projectDone = require('./images/project-done.webp')
+    const projectCurrent = require('./images/current-project.webp')
 
-    const [box, setBox] = React.useState({
+    const [drawerBox, setDrawerBox] = React.useState({
         right: false,
     });
 
@@ -91,68 +145,104 @@ function Home() {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-        setBox({ ...box, [anchor]: open });
+        setDrawerBox({ ...drawerBox, [anchor]: open });
     };
 
     return (
         <>
-            <div className='WebApp'>
+            <div className={`WebApp-${props.isDark ? 'dark' : 'light'}`}>
                 {/* Home Page */}
 
                 <div className='homepage'>
-                    <div className='header'>
+                    <div className={`header-${props.isDark ? 'dark' : 'light'}`}>
                         <div className='header-img'>
-                            <a href='#home' aria-label="Home">
-                                <img className='header-logo' alt='Logo' src={logoDark} />
+                            <a
+                                href='#home'
+                                aria-label="Home"
+                            >
+                                {(props.isDark ?
+                                    <img
+                                        alt='Logo'
+                                        src={logoDark}
+                                        className='header-logo'
+                                    />
+                                    :
+                                    <img
+                                        alt='Logo'
+                                        src={logoLight}
+                                        className='header-logo'
+                                    />
+                                )}
                             </a>
                         </div>
 
                         <div id='header-links-tray'>
                             <a
                                 href='#home'
-                                className='header-links'
+                                className={`header-links-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 Home
                             </a>
 
                             <a
                                 href='#about'
-                                className='header-links'
+                                className={`header-links-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 About
                             </a>
 
                             <a
                                 href='#exp'
-                                className='header-links'
+                                className={`header-links-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 Experiences
                             </a>
 
                             <a
                                 href='#contact'
-                                className='header-links'
+                                className={`header-links-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 Contact
                             </a>
                         </div>
 
+                        <div id='header-toggle-mode-1'>
+                            <FormControlLabel
+                                id='header-toggle-mode-btn'
+                                control={<MaterialUISwitch
+                                    checked={props.isDark}
+                                    aria-label='Toggle Mode'
+                                    onChange={props.toggleTheme}
+                                />}
+                            />
+                        </div>
+
                         <div className='header-menu-tray'>
                             {['right'].map((anchor) => (
                                 <React.Fragment key={anchor}>
-                                    <div className='header-menu-icon'>
+                                    <div id='header-toggle-mode-2'>
+                                        <FormControlLabel
+                                            id='header-toggle-mode-btn'
+                                            control={<MaterialUISwitch
+                                                checked={props.isDark}
+                                                aria-label='Toggle Mode'
+                                                onChange={props.toggleTheme}
+                                            />}
+                                        />
+                                    </div>
+
+                                    <div>
                                         <IconButton
                                             aria-label="Menu"
-                                            id='header-menu-btn'
                                             onClick={toggleDrawer(anchor, true)}
                                         >
-                                            <MenuIcon id='header-menu-icon-btn' />
+                                            <MenuIcon id={`header-menu-icon-btn-${props.isDark ? 'dark' : 'light'}`} />
                                         </IconButton>
                                     </div>
 
                                     <Drawer
                                         anchor={anchor}
-                                        open={box[anchor]}
+                                        open={drawerBox[anchor]}
                                         onClose={toggleDrawer(anchor, false)}
                                     >
                                         <Box
@@ -165,7 +255,7 @@ function Home() {
                                                 <div className='home-tray-links'>
                                                     <a
                                                         href='#home'
-                                                        id='home-tray-link'
+                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         Home
                                                     </a>
@@ -174,7 +264,7 @@ function Home() {
                                                 <div className='home-tray-links'>
                                                     <a
                                                         href='#about'
-                                                        id='home-tray-link'
+                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         About
                                                     </a>
@@ -183,7 +273,7 @@ function Home() {
                                                 <div className='home-tray-links'>
                                                     <a
                                                         href='#exp'
-                                                        id='home-tray-link'
+                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         Experiences
                                                     </a>
@@ -192,7 +282,7 @@ function Home() {
                                                 <div className='home-tray-links'>
                                                     <a
                                                         href='#contact'
-                                                        id='home-tray-link'
+                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         Contact
                                                     </a>

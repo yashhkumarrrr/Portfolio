@@ -1,3 +1,17 @@
+.WebApp-light {
+    color: #000000;
+    font-family: 'Poppins';
+    background-color: #ffffff;
+}
+
+.WebApp-dark {
+    color: #ffffff;
+    font-family: 'Poppins';
+    background-color: #000000;
+}
+
+/* Homepage */
+
 .homepage {
     display: flex;
     min-height: 100vh;
@@ -5,7 +19,19 @@
 
 /* Header */
 
-.header {
+.header-light {
+    width: 100vw;
+    height: 60px;
+    z-index: 1000;
+    display: flex;
+    position: fixed;
+    user-select: none;
+    align-items: center;
+    background-color: #ffffff;
+    justify-content: space-around;
+}
+
+.header-dark {
     width: 100vw;
     height: 60px;
     z-index: 1000;
@@ -25,7 +51,15 @@
     height: 100%;
 }
 
-.header-links {
+.header-links-light {
+    padding: 5px;
+    margin: 0px 5px;
+    color: #000000;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.header-links-dark {
     padding: 5px;
     margin: 0px 5px;
     color: #ffffff;
@@ -33,27 +67,34 @@
     text-decoration: none;
 }
 
-.header-links:hover {
+.header-links-light:hover,
+.header-links-dark:hover {
     color: #ff0000;
-    border-bottom: solid #ff0000 1px;
+    border-bottom: solid #ff0000 2px;
+}
+
+#header-toggle-mode-btn {
+    margin: 0;
 }
 
 .header-menu-tray {
     display: none;
 }
 
-.header-menu-icon {
-    border-radius: 10px;
-    border: solid #ffffff 1px;
-}
-
-#header-menu-btn {
+#header-menu-icon-btn-light {
     padding: 5px;
+    font-size: 30px;
+    color: #000000;
+    border-radius: 10px;
+    border: solid #000000 2px;
 }
 
-#header-menu-icon-btn {
+#header-menu-icon-btn-dark {
+    padding: 5px;
     font-size: 30px;
     color: #ffffff;
+    border-radius: 10px;
+    border: solid #ffffff 2px;
 }
 
 #header-tray-box {
@@ -67,10 +108,20 @@
     text-align: center;
 }
 
-#home-tray-link {
+#home-tray-link-light {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: solid #ff0000 1px;
+}
+
+#home-tray-link-dark {
     color: #ffffff;
     text-decoration: none;
     border-bottom: solid #ff0000 1px;
+}
+
+#header-toggle-mode-2 {
+    margin: 0px 15px;
 }
 
 @media (max-width: 900px) {
@@ -83,13 +134,18 @@
         display: none;
     }
 
+    #header-toggle-mode-1 {
+        display: none;
+    }
+
     .header-img {
         margin-left: 5%;
     }
 
     .header-menu-tray {
-        display: inline;
+        display: flex;
         margin-right: 5%;
+        align-items: center;
     }
 }
 
@@ -100,6 +156,10 @@
 
     #header-menu-icon-btn {
         font-size: 25px;
+    }
+
+    #header-toggle-mode-2 {
+        margin: 0px 10px;
     }
 }
 
