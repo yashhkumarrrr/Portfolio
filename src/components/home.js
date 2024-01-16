@@ -85,17 +85,18 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 function Home(props) {
 
-    const [open, setOpen] = useState(false);
+    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+    const [successSnackbar, setSuccessSnackbar] = useState(true);
 
     const openSnackbar = () => {
-        setOpen(true);
+        setIsSnackbarOpen(true);
     };
 
     const closeSnackbar = (reason) => {
         if (reason === 'clickAway') {
             return;
         }
-        setOpen(false);
+        setIsSnackbarOpen(false);
     };
 
     const formik = useFormik({
@@ -112,30 +113,32 @@ function Home(props) {
                     Number: formik.values.number,
                     Message: formik.values.message,
                 });
+                setSuccessSnackbar(true);
                 openSnackbar();
                 formik.resetForm();
             }
             catch (e) {
-                console.log(e)
+                setSuccessSnackbar(false);
+                openSnackbar();
             }
         },
     });
 
-    const resume = require('./resume.pdf')
-    const djb = require('./images/djb.webp')
-    const gmail = require('./images/gmail.webp')
-    const photo1 = require('./images/photo1.webp')
-    const photo2 = require('./images/photo2.webp')
-    const github = require('./images/github.webp')
-    const IdCard = require('./images/id-card.webp')
-    const appointy = require('./images/appointy.webp')
-    const whatsapp = require('./images/whatsapp.webp')
-    const logoDark = require('./images/logo-dark.webp')
-    const linkedin2 = require('./images/linkedin.webp')
-    const logoLight = require('./images/logo-light.webp')
-    const linkedin1 = require('./images/linkedin-2.webp')
-    const projectDone = require('./images/project-done.webp')
-    const projectCurrent = require('./images/current-project.webp')
+    const resume = require('./resume.pdf');
+    const djb = require('./images/djb.webp');
+    const gmail = require('./images/gmail.webp');
+    const photo1 = require('./images/photo1.webp');
+    const photo2 = require('./images/photo2.webp');
+    const github = require('./images/github.webp');
+    const IdCard = require('./images/id-card.webp');
+    const appointy = require('./images/appointy.webp');
+    const whatsapp = require('./images/whatsapp.webp');
+    const logoDark = require('./images/logo-dark.webp');
+    const linkedin2 = require('./images/linkedin.webp');
+    const logoLight = require('./images/logo-light.webp');
+    const linkedin1 = require('./images/linkedin-2.webp');
+    const projectDone = require('./images/project-done.webp');
+    const projectCurrent = require('./images/current-project.webp');
 
     const [drawerBox, setDrawerBox] = React.useState({
         right: false,
@@ -150,7 +153,8 @@ function Home(props) {
 
     return (
         <>
-            <div className={`WebApp-${props.isDark ? 'dark' : 'light'}`}>
+            <div className={`body-${props.isDark ? 'dark' : 'light'}`}>
+
                 {/* Home Page */}
 
                 <div className='homepage'>
@@ -246,43 +250,43 @@ function Home(props) {
                                         onClose={toggleDrawer(anchor, false)}
                                     >
                                         <Box
-                                            id='header-tray-box'
+                                            id={`header-tray-box-${props.isDark ? 'dark' : 'light'}`}
                                             onClick={toggleDrawer(anchor, false)}
                                             onKeyDown={toggleDrawer(anchor, false)}
                                             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 200 }}
                                         >
                                             <div>
-                                                <div className='home-tray-links'>
+                                                <div className='header-tray-links'>
                                                     <a
                                                         href='#home'
-                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
+                                                        className={`header-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         Home
                                                     </a>
                                                 </div>
 
-                                                <div className='home-tray-links'>
+                                                <div className='header-tray-links'>
                                                     <a
                                                         href='#about'
-                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
+                                                        className={`header-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         About
                                                     </a>
                                                 </div>
 
-                                                <div className='home-tray-links'>
+                                                <div className='header-tray-links'>
                                                     <a
                                                         href='#exp'
-                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
+                                                        className={`header-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         Experiences
                                                     </a>
                                                 </div>
 
-                                                <div className='home-tray-links'>
+                                                <div className='header-tray-links'>
                                                     <a
                                                         href='#contact'
-                                                        id={`home-tray-link-${props.isDark ? 'dark' : 'light'}`}
+                                                        className={`header-tray-link-${props.isDark ? 'dark' : 'light'}`}
                                                     >
                                                         Contact
                                                     </a>
@@ -438,7 +442,7 @@ function Home(props) {
 
                 {/* Experience */}
 
-                < div id='exp' >
+                <div id='exp' >
                     <div className='exp-head'>
                         <span className='exp-head-txt-1'>EXPERI</span>
                         <span className='exp-head-txt-2'>ENCE</span>
@@ -575,85 +579,85 @@ function Home(props) {
                             </TimelineItem>
                         </Timeline>
                     </div>
+
+                    <div className='exp-info'>
+                        <div className='exp-info-section'>
+                            <div className='exp-info-section-1'>
+                                <div>
+                                    <img
+                                        alt=''
+                                        src={projectDone}
+                                        className='exp-info-img'
+                                    />
+                                </div>
+
+                                <div className='exp-info-txt'>
+                                    10+
+                                </div>
+
+                                <div>
+                                    Completed Projects
+                                </div>
+                            </div>
+
+                            <div className='exp-info-section-2'>
+                                <div>
+                                    <img
+                                        alt=''
+                                        src={IdCard}
+                                        className='exp-info-img'
+                                    />
+                                </div>
+
+                                <div className='exp-info-txt'>
+                                    2
+                                </div>
+
+                                <div>
+                                    Internships
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='exp-info-section'>
+                            <div className='exp-info-section-3'>
+                                <div>
+                                    <img
+                                        alt=''
+                                        src={linkedin1}
+                                        className='exp-info-img'
+                                    />
+                                </div>
+
+                                <div className='exp-info-txt'>
+                                    950+
+                                </div>
+
+                                <div>
+                                    Connections
+                                </div>
+                            </div>
+
+                            <div className='exp-info-section-4'>
+                                <div>
+                                    <img
+                                        alt=''
+                                        src={projectCurrent}
+                                        className='exp-info-img'
+                                    />
+                                </div>
+
+                                <div className='exp-info-txt'>
+                                    5+
+                                </div>
+
+                                <div>
+                                    Current Projects
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div >
-
-                <div className='exp-info'>
-                    <div className='exp-info-section'>
-                        <div className='exp-info-section-1'>
-                            <div>
-                                <img
-                                    alt=''
-                                    src={projectDone}
-                                    className='exp-info-img'
-                                />
-                            </div>
-
-                            <div className='exp-info-txt'>
-                                10+
-                            </div>
-
-                            <div>
-                                Completed Projects
-                            </div>
-                        </div>
-
-                        <div className='exp-info-section-2'>
-                            <div>
-                                <img
-                                    alt=''
-                                    src={IdCard}
-                                    className='exp-info-img'
-                                />
-                            </div>
-
-                            <div className='exp-info-txt'>
-                                2
-                            </div>
-
-                            <div>
-                                Internships
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='exp-info-section'>
-                        <div className='exp-info-section-3'>
-                            <div>
-                                <img
-                                    alt=''
-                                    src={linkedin1}
-                                    className='exp-info-img'
-                                />
-                            </div>
-
-                            <div className='exp-info-txt'>
-                                950+
-                            </div>
-
-                            <div>
-                                Connections
-                            </div>
-                        </div>
-
-                        <div className='exp-info-section-4'>
-                            <div>
-                                <img
-                                    alt=''
-                                    src={projectCurrent}
-                                    className='exp-info-img'
-                                />
-                            </div>
-
-                            <div className='exp-info-txt'>
-                                5+
-                            </div>
-
-                            <div>
-                                Current Projects
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 {/* Contact */}
 
@@ -831,9 +835,17 @@ function Home(props) {
                     </Link>
                 </div>
 
-                <Snackbar open={open} autoHideDuration={3000} onClose={closeSnackbar}>
-                    <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%', fontFamily: 'Poppins', fontSize: '14px', fontWeight: '300' }}>
-                        Your message is successfully delivered!
+                <Snackbar open={isSnackbarOpen} autoHideDuration={3000} onClose={closeSnackbar}>
+                    <Alert onClose={closeSnackbar} severity={(successSnackbar) ? 'success' : 'error'} sx={{ width: '100%', fontFamily: 'Poppins', fontSize: '14px', fontWeight: '300' }}>
+                        {(successSnackbar) ?
+                            <div>
+                                Your message is successfully delivered!
+                            </div>
+                            :
+                            <div>
+                                Some Error Occurred!!
+                            </div>
+                        }
                     </Alert>
                 </Snackbar>
             </div>

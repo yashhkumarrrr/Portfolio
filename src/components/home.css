@@ -1,10 +1,10 @@
-.WebApp-light {
+.body-light {
     color: #000000;
     font-family: 'Poppins';
     background-color: #ffffff;
 }
 
-.WebApp-dark {
+.body-dark {
     color: #ffffff;
     font-family: 'Poppins';
     background-color: #000000;
@@ -21,7 +21,7 @@
 
 .header-light {
     width: 100vw;
-    height: 60px;
+    height: 55px;
     z-index: 1000;
     display: flex;
     position: fixed;
@@ -33,7 +33,7 @@
 
 .header-dark {
     width: 100vw;
-    height: 60px;
+    height: 55px;
     z-index: 1000;
     display: flex;
     position: fixed;
@@ -55,6 +55,7 @@
     padding: 5px;
     margin: 0px 5px;
     color: #000000;
+    transition: 0.2s;
     font-size: 1.1rem;
     text-decoration: none;
 }
@@ -63,6 +64,7 @@
     padding: 5px;
     margin: 0px 5px;
     color: #ffffff;
+    transition: 0.2s;
     font-size: 1.1rem;
     text-decoration: none;
 }
@@ -97,24 +99,32 @@
     border: solid #ffffff 2px;
 }
 
-#header-tray-box {
+#header-tray-box-light {
     height: 100%;
     font-size: 1.1rem;
     padding-top: 10px;
+    background-color: #dcdcdc;
 }
 
-.home-tray-links {
+#header-tray-box-dark {
+    height: 100%;
+    font-size: 1.1rem;
+    padding-top: 10px;
+    background-color: rgb(35, 35, 35);
+}
+
+.header-tray-links {
     margin: 30px;
     text-align: center;
 }
 
-#home-tray-link-light {
+.header-tray-link-light {
     color: #000000;
     text-decoration: none;
     border-bottom: solid #ff0000 1px;
 }
 
-#home-tray-link-dark {
+.header-tray-link-dark {
     color: #ffffff;
     text-decoration: none;
     border-bottom: solid #ff0000 1px;
@@ -125,11 +135,6 @@
 }
 
 @media (max-width: 900px) {
-    .header {
-        height: 55px;
-        justify-content: space-between;
-    }
-
     #header-links-tray {
         display: none;
     }
@@ -150,10 +155,6 @@
 }
 
 @media (max-width: 500px) {
-    .header {
-        height: 50px;
-    }
-
     #header-menu-icon-btn {
         font-size: 25px;
     }
@@ -294,6 +295,7 @@
 
 #about {
     display: flex;
+    /* padding-top: 60px; */
     color: #ffffff;
     flex-direction: column;
 }
