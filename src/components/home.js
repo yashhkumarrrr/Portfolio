@@ -126,19 +126,18 @@ function Home(props) {
 
     const resume = require('./resume.pdf');
     const djb = require('./images/djb.webp');
-    const gmail = require('./images/gmail.webp');
+    const logo = require('./images/logo.webp');
+    const mail = require('./images/mail.webp');
     const photo1 = require('./images/photo1.webp');
     const photo2 = require('./images/photo2.webp');
     const github = require('./images/github.webp');
-    const IdCard = require('./images/id-card.webp');
     const appointy = require('./images/appointy.webp');
     const whatsapp = require('./images/whatsapp.webp');
-    const logoDark = require('./images/logo-dark.webp');
-    const linkedin2 = require('./images/linkedin.webp');
-    const logoLight = require('./images/logo-light.webp');
-    const linkedin1 = require('./images/linkedin-2.webp');
-    const projectDone = require('./images/project-done.webp');
-    const projectCurrent = require('./images/current-project.webp');
+    const linkedin = require('./images/linkedin.webp');
+    const internships = require('./images/internships.webp');
+    const connections = require('./images/connections.webp');
+    const currentProjects = require('./images/currentProjects.webp');
+    const completedProjects = require('./images/completedProjects.webp');
 
     const [drawerBox, setDrawerBox] = React.useState({
         right: false,
@@ -164,19 +163,11 @@ function Home(props) {
                                 href='#home'
                                 aria-label="Home"
                             >
-                                {(props.isDark ?
-                                    <img
-                                        alt='Logo'
-                                        src={logoDark}
-                                        className='header-logo'
-                                    />
-                                    :
-                                    <img
-                                        alt='Logo'
-                                        src={logoLight}
-                                        className='header-logo'
-                                    />
-                                )}
+                                <img
+                                    alt='Logo'
+                                    src={logo}
+                                    className='header-logo'
+                                />
                             </a>
                         </div>
 
@@ -302,7 +293,7 @@ function Home(props) {
                     <div id='home'>
                         <div className='home-div-1'>
                             <div
-                                id='home-div-1-1'
+                                id={`home-div-1-1-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 Hello, my name is
                             </div>
@@ -314,7 +305,7 @@ function Home(props) {
                             </div>
 
                             <div
-                                id='home-div-1-3'
+                                id={`home-div-1-3-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 A Creative Web Developer and an Electronics Engineer
                             </div>
@@ -367,59 +358,69 @@ function Home(props) {
                                     I'm currently a 4th year B.Tech student at Netaji Subhas University of Technology, Dwarka, Delhi in the field of Electronics and Communication Engineering. A web developer with strong focus on quality of content and perfection.
                                 </div>
 
-                                <div className='about-body-2-3'>
-                                    <div className='about-body-2-3-1'>
-                                        <div>
-                                            Birthday
-                                        </div>
+                                <table className='about-body-2-3'>
+                                    <tbody>
+                                        <tr>
+                                            <td className='about-body-2-3-1'>
+                                                Name
+                                            </td>
 
-                                        <div>
-                                            Phone
-                                        </div>
+                                            <td className='about-body-2-3-2'>
+                                                : Yash Kumar
+                                            </td>
+                                        </tr>
 
-                                        <div>
-                                            Gmail
-                                        </div>
+                                        <tr>
+                                            <td className='about-body-2-3-1'>
+                                                Phone
+                                            </td>
 
-                                        <div>
-                                            From
-                                        </div>
+                                            <td className='about-body-2-3-2'>
+                                                : 8826367476
+                                            </td>
+                                        </tr>
 
-                                        <div>
-                                            Language
-                                        </div>
+                                        <tr>
+                                            <td className='about-body-2-3-1'>
+                                                Gmail
+                                            </td>
 
-                                        <div>
-                                            Freelance
-                                        </div>
-                                    </div>
+                                            <td className='about-body-2-3-2'>
+                                                : yashhkumarrrr
+                                            </td>
+                                        </tr>
 
-                                    <div className='about-body-2-3-2'>
-                                        <div>
-                                            : &nbsp;12th April
-                                        </div>
+                                        <tr>
+                                            <td className='about-body-2-3-1'>
+                                                From
+                                            </td>
 
-                                        <div>
-                                            : &nbsp;8826367476
-                                        </div>
+                                            <td className='about-body-2-3-2'>
+                                                : Delhi, India
+                                            </td>
+                                        </tr>
 
-                                        <div>
-                                            : &nbsp;yashhkumarrrr
-                                        </div>
+                                        <tr>
+                                            <td className='about-body-2-3-1'>
+                                                Language
+                                            </td>
 
-                                        <div>
-                                            : &nbsp;Delhi, India
-                                        </div>
+                                            <td className='about-body-2-3-2'>
+                                                : English, Hindi
+                                            </td>
+                                        </tr>
 
-                                        <div>
-                                            : &nbsp;English, Hindi
-                                        </div>
+                                        <tr>
+                                            <td className='about-body-2-3-1'>
+                                                Freelance
+                                            </td>
 
-                                        <div>
-                                            : &nbsp;Available
-                                        </div>
-                                    </div>
-                                </div>
+                                            <td className='about-body-2-3-2'>
+                                                : Available
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                                 <div className='about-body-2-4'>
                                     <div>
@@ -433,7 +434,6 @@ function Home(props) {
                                             Download CV
                                         </a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -458,14 +458,14 @@ function Home(props) {
                                         Product Development
                                     </div>
 
-                                    <div className='timeline-1-minor-2'>
+                                    <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
                                         5<sup>th</sup> Jun 23 - 5<sup>th</sup> Aug 23
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
-                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
                                         <img src={appointy} alt='' id='timeline-1-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
@@ -476,7 +476,7 @@ function Home(props) {
                                         Appointy India Ltd.
                                     </div>
 
-                                    <div className='timeline-1-major-2'>
+                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}>
                                         Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
                                     </div>
                                 </TimelineContent>
@@ -490,14 +490,14 @@ function Home(props) {
                                         Analyst
                                     </div>
 
-                                    <div className='timeline-1-minor-2'>
+                                    <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
                                         31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
-                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
                                         <img src={djb} alt='' id='timeline-1-icon-2' />
                                     </TimelineDot>
                                     <TimelineConnector />
@@ -507,7 +507,7 @@ function Home(props) {
                                         Delhi Jal board
                                     </div>
 
-                                    <div className='timeline-1-major-2' id='timeline-1-float'>
+                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`} id='timeline-1-float'>
                                         Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
                                     </div>
                                 </TimelineContent>
@@ -526,7 +526,7 @@ function Home(props) {
                         >
                             <TimelineItem>
                                 <TimelineSeparator>
-                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
                                         <img src={appointy} alt='' id='timeline-2-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
@@ -541,11 +541,11 @@ function Home(props) {
                                         Product Developement
                                     </div>
 
-                                    <div className='timeline-2-minor-2'>
+                                    <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
                                         5<sup>th</sup> Jun 23 - 5<sup>th</sup> Aug 23
                                     </div>
 
-                                    <div className='timeline-2-major-2'>
+                                    <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
                                         Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
                                     </div>
                                 </TimelineContent>
@@ -553,7 +553,7 @@ function Home(props) {
 
                             <TimelineItem>
                                 <TimelineSeparator>
-                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
                                         <img src={djb} alt='' id='timeline-2-icon-2' />
                                     </TimelineDot>
                                     <TimelineConnector />
@@ -568,11 +568,11 @@ function Home(props) {
                                         Analyst
                                     </div>
 
-                                    <div className='timeline-2-minor-2'>
+                                    <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
                                         31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
                                     </div>
 
-                                    <div className='timeline-2-major-2'>
+                                    <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
                                         Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
                                     </div>
                                 </TimelineContent>
@@ -582,11 +582,11 @@ function Home(props) {
 
                     <div className='exp-info'>
                         <div className='exp-info-section'>
-                            <div className='exp-info-section-1'>
+                            <div className={`exp-info-section-1-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
-                                        src={projectDone}
+                                        src={completedProjects}
                                         className='exp-info-img'
                                     />
                                 </div>
@@ -600,11 +600,11 @@ function Home(props) {
                                 </div>
                             </div>
 
-                            <div className='exp-info-section-2'>
+                            <div className={`exp-info-section-2-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
-                                        src={IdCard}
+                                        src={internships}
                                         className='exp-info-img'
                                     />
                                 </div>
@@ -620,11 +620,11 @@ function Home(props) {
                         </div>
 
                         <div className='exp-info-section'>
-                            <div className='exp-info-section-3'>
+                            <div className={`exp-info-section-3-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
-                                        src={linkedin1}
+                                        src={connections}
                                         className='exp-info-img'
                                     />
                                 </div>
@@ -638,11 +638,11 @@ function Home(props) {
                                 </div>
                             </div>
 
-                            <div className='exp-info-section-4'>
+                            <div className={`exp-info-section-4-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
-                                        src={projectCurrent}
+                                        src={currentProjects}
                                         className='exp-info-img'
                                     />
                                 </div>
@@ -691,7 +691,7 @@ function Home(props) {
                                         autoComplete='off'
                                         value={formik.values.name}
                                         onBlur={formik.handleBlur}
-                                        className='contact-form-input'
+                                        className={`contact-form-input-${props.isDark ? 'dark' : 'light'}`}
                                         onChange={formik.handleChange}
                                         placeholder='Enter Your Name *'
                                     />
@@ -707,7 +707,7 @@ function Home(props) {
                                         autoComplete='off'
                                         onBlur={formik.handleBlur}
                                         value={formik.values.number}
-                                        className='contact-form-input'
+                                        className={`contact-form-input-${props.isDark ? 'dark' : 'light'}`}
                                         onChange={formik.handleChange}
                                         placeholder='Enter Contact Number *'
                                     />
@@ -723,7 +723,7 @@ function Home(props) {
                                         autoComplete='off'
                                         onBlur={formik.handleBlur}
                                         value={formik.values.message}
-                                        className='contact-form-input'
+                                        className={`contact-form-input-${props.isDark ? 'dark' : 'light'}`}
                                         onChange={formik.handleChange}
                                         placeholder='Type your Message *'
                                     />
@@ -748,13 +748,13 @@ function Home(props) {
                         <div className='contact-info-1'>
                             <Link
                                 target='_blank'
-                                id='contact-info-section-1'
                                 className='contact-info-section'
                                 to='mailto:yashhkumarrrr@gmail.com'
+                                id={`contact-info-section-1-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 <div>
                                     <img
-                                        src={gmail}
+                                        src={mail}
                                         alt='GmailLogo'
                                         className='contact-info-link-img'
                                     />
@@ -766,7 +766,7 @@ function Home(props) {
 
                             <Link
                                 target='_blank'
-                                id='contact-info-section-2'
+                                id={`contact-info-section-2-${props.isDark ? 'dark' : 'light'}`}
                                 className='contact-info-section'
                                 to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
                             >
@@ -786,13 +786,13 @@ function Home(props) {
                         <div className='contact-info-1'>
                             <Link
                                 target='_blank'
-                                id='contact-info-section-3'
+                                id={`contact-info-section-3-${props.isDark ? 'dark' : 'light'}`}
                                 className='contact-info-section'
                                 to='https://www.linkedin.com/in/yashhkumarrrr'
                             >
                                 <div>
                                     <img
-                                        src={linkedin2}
+                                        src={linkedin}
                                         alt='LinkedInLogo'
                                         className='contact-info-link-img'
                                     />
@@ -805,7 +805,7 @@ function Home(props) {
 
                             <Link
                                 target='_blank'
-                                id='contact-info-section-4'
+                                id={`contact-info-section-4-${props.isDark ? 'dark' : 'light'}`}
                                 className='contact-info-section'
                                 to='https://www.github.com/yashhkumarrrr'
                             >
@@ -823,6 +823,8 @@ function Home(props) {
                         </div>
                     </div>
                 </div>
+
+                {/* Footer */}
 
                 <div className='footer'>
                     Developed by -&nbsp;
