@@ -85,18 +85,18 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 function Home(props) {
 
-    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
-    const [successSnackbar, setSuccessSnackbar] = useState(true);
+    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false)
+    const [successSnackbar, setSuccessSnackbar] = useState(true)
 
     const openSnackbar = () => {
-        setIsSnackbarOpen(true);
+        setIsSnackbarOpen(true)
     };
 
     const closeSnackbar = (reason) => {
         if (reason === 'clickAway') {
             return;
         }
-        setIsSnackbarOpen(false);
+        setIsSnackbarOpen(false)
     };
 
     const formik = useFormik({
@@ -837,7 +837,7 @@ function Home(props) {
                     </Link>
                 </div>
 
-                <Snackbar open={isSnackbarOpen} autoHideDuration={3000} onClose={closeSnackbar}>
+                <Snackbar open={isSnackbarOpen} autoHideDuration={1500} onClose={closeSnackbar}>
                     <Alert onClose={closeSnackbar} severity={(successSnackbar) ? 'success' : 'error'} sx={{ width: '100%', fontFamily: 'Poppins', fontSize: '14px', fontWeight: '300' }}>
                         {(successSnackbar) ?
                             <div>
