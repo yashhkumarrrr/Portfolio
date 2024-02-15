@@ -108,7 +108,7 @@ function Home(props) {
         validationSchema: validationSchema,
         onSubmit: () => {
             try {
-                axios.post('https://64869defbeba6297278ef763.mockapi.io/PortfolioFeedback', {
+                axios.post('https://64869defbeba6297278ef763.mockapi.io/contact', {
                     Name: formik.values.name,
                     Number: formik.values.number,
                     Message: formik.values.message,
