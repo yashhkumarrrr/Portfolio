@@ -108,7 +108,7 @@ function Home(props) {
         validationSchema: validationSchema,
         onSubmit: () => {
             try {
-                axios.post('https://64869defbeba6297278ef763.mockapi.io/contact', {
+                axios.post('https://66177575ed6b8fa43482b125.mockapi.io/yashhkumarrrr/api/contact', {
                     Name: formik.values.name,
                     Number: formik.values.number,
                     Message: formik.values.message,
@@ -610,7 +610,7 @@ function Home(props) {
                                 </div>
 
                                 <div className='exp-info-txt'>
-                                    2
+                                    3
                                 </div>
 
                                 <div>
@@ -630,7 +630,7 @@ function Home(props) {
                                 </div>
 
                                 <div className='exp-info-txt'>
-                                    950+
+                                    1.1k+
                                 </div>
 
                                 <div>
@@ -828,13 +828,12 @@ function Home(props) {
 
                 <div className='footer'>
                     Developed by -&nbsp;
-                    <Link
-                        target='_blank'
+                    <a
                         id='footer-link'
-                        to='https://yashhkumarrrr.netlify.app'
+                        href='#home'
                     >
-                        Yash
-                    </Link>
+                        yashhkumarrrr
+                    </a>
                 </div>
 
                 <Snackbar open={isSnackbarOpen} autoHideDuration={1500} onClose={closeSnackbar}>

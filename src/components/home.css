@@ -16,7 +16,7 @@
     display: flex;
     height: 100vh;
     min-height: 600px;
-    max-height: 800px;  
+    max-height: 800px;
 }
 
 /* Header */
@@ -1170,13 +1170,12 @@
 
 .footer {
     padding: 3px;
-    font-weight: 300;
+    font-size: 0.9rem;
     text-align: center;
     font-family: 'Poppins';
 }
 
 #footer-link {
-    font-weight: 400;
     color: #ff0000;
     text-decoration: none;
 }
