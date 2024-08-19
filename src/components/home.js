@@ -132,6 +132,7 @@ function Home(props) {
     const photo2 = require('./images/photo2.webp');
     const github = require('./images/github.webp');
     const appointy = require('./images/appointy.webp');
+    const magictap = require('./images/magictap.webp');
     const whatsapp = require('./images/whatsapp.webp');
     const linkedin = require('./images/linkedin.webp');
     const internships = require('./images/internships.webp');
@@ -355,7 +356,7 @@ function Home(props) {
                                 </div>
 
                                 <div className='about-body-2-2'>
-                                    I'm currently a 4th year B.Tech student at Netaji Subhas University of Technology, Dwarka, Delhi in the field of Electronics and Communication Engineering. A web developer with strong focus on quality of content and perfection.
+                                    Currently employed as an Operations Executive at Magictap Solutions Pvt. Ltd., I specialize in staying abreast of emerging technologies within AR, VR, Electronics, Robotics, and AI. Possessing a strong ability to collaborate effectively within teams, I can also take the lead in project management or work independently as required.
                                 </div>
 
                                 <table className='about-body-2-3'>
@@ -376,7 +377,13 @@ function Home(props) {
                                             </td>
 
                                             <td className='about-body-2-3-2'>
-                                                : 8826367476
+                                                <Link
+                                                    target='_blank'
+                                                    to='tel:8826367476'
+                                                    className={`about-body-2-3-2-link-${props.isDark ? 'dark' : 'light'}`}
+                                                >
+                                                    : 8826367476
+                                                </Link>
                                             </td>
                                         </tr>
 
@@ -386,7 +393,13 @@ function Home(props) {
                                             </td>
 
                                             <td className='about-body-2-3-2'>
-                                                : yashhkumarrrr
+                                                <Link
+                                                    target='_blank'
+                                                    to='mailto:yashhkumarrrr'
+                                                    className={`about-body-2-3-2-link-${props.isDark ? 'dark' : 'light'}`}
+                                                >
+                                                    : yashhkumarrrr
+                                                </Link>
                                             </td>
                                         </tr>
 
@@ -455,7 +468,39 @@ function Home(props) {
                                     sx={{ m: 'auto 0' }}
                                 >
                                     <div className='timeline-1-minor-1'>
-                                        Product Development
+                                        Analyst
+                                    </div>
+
+                                    <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
+                                    </div>
+                                </TimelineOppositeContent>
+
+                                <TimelineSeparator>
+                                    <TimelineConnector />
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                        <img src={djb} alt='' id='timeline-1-icon-2' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-1-major-1'>
+                                        Delhi Jal board
+                                    </div>
+
+                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        As an Analyst, I conducted data integrity checks on government servers. Additionally, I engaged with consumers to gather feedback on service-related issues. These insights informed recommendations for enhancing the consumer experience.
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+
+                            <TimelineItem>
+                                <TimelineOppositeContent
+                                    sx={{ m: 'auto 0' }}
+                                >
+                                    <div className='timeline-1-minor-1'>
+                                        React JS Developer
                                     </div>
 
                                     <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
@@ -476,8 +521,9 @@ function Home(props) {
                                         Appointy India Ltd.
                                     </div>
 
-                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
+                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}
+                                        id='timeline-float'>
+                                        As a React JS Developer, I developed functional and responsive appointment scheduling webpages tailored to client-specific requirements. These webpages were designed for seamless integration into clients' official websites, enhancing public engagement and accessibility
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -487,28 +533,28 @@ function Home(props) {
                                     sx={{ m: 'auto 0' }}
                                 >
                                     <div className='timeline-1-minor-1'>
-                                        Analyst
+                                        Operations Executive
                                     </div>
 
                                     <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
+                                        27<sup>th</sup> May 24 - Present
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
-                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
-                                        <img src={djb} alt='' id='timeline-1-icon-2' />
+                                    <TimelineDot sx={{ backgroundColor: '#0f0d2f' }}>
+                                        <img src={magictap} alt='' id='timeline-1-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
                                 <TimelineContent sx={{ py: '30px', px: 2 }}>
                                     <div className='timeline-1-major-1'>
-                                        Delhi Jal board
+                                        Magictap Solutions Pvt. Ltd.
                                     </div>
 
-                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`} id='timeline-1-float'>
-                                        Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
+                                    <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        As an Operations Executive, assuming leadership in diverse areas including frontend development, robotics, AI, AR, and VR training. Gained comprehensive nationwide exposure across various organizational levels. Collaborated closely with the team, providing guidance and support while independently handling tasks as required
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -526,35 +572,8 @@ function Home(props) {
                         >
                             <TimelineItem>
                                 <TimelineSeparator>
-                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
-                                        <img src={appointy} alt='' id='timeline-2-icon-1' />
-                                    </TimelineDot>
-                                    <TimelineConnector />
-                                </TimelineSeparator>
-
-                                <TimelineContent sx={{ py: '20px', px: 2 }}>
-                                    <div className='timeline-2-major-1'>
-                                        Appointy India Ltd.
-                                    </div>
-
-                                    <div className='timeline-2-minor-1'>
-                                        Product Developement
-                                    </div>
-
-                                    <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        5<sup>th</sup> Jun 23 - 5<sup>th</sup> Aug 23
-                                    </div>
-
-                                    <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        Worked as a Product Developer using React.JS for developing functional and responsive webpages so that the existing or new clients of the company can schedule an Appointment for a meeting with our executives to get Financial or Technical Assistance as per their requirements
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
                                     <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
-                                        <img src={djb} alt='' id='timeline-2-icon-2' />
+                                        <img src={djb} alt='' id='timeline-2-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
@@ -573,7 +592,61 @@ function Home(props) {
                                     </div>
 
                                     <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        Worked as an Analyst and went through the data stored on the Government Servers and to check for any discrepancies. Also, get a chance to contact the consumers and listen to the issues and problems faced by them related to our services, so that the authorities can provide a better experience for consumers
+                                        As an Analyst, I conducted data integrity checks on government servers. Additionally, I engaged with consumers to gather feedback on service-related issues. These insights informed recommendations for enhancing the consumer experience.
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot sx={{ backgroundColor: '#9e00dc' }}>
+                                        <img src={appointy} alt='' id='timeline-2-icon-2' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-2-major-1'>
+                                        Appointy India Ltd.
+                                    </div>
+
+                                    <div className='timeline-2-minor-1'>
+                                        React JS Developer
+                                    </div>
+
+                                    <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        5<sup>th</sup> Jun 23 - 5<sup>th</sup> Aug 23
+                                    </div>
+
+                                    <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        As a React JS Developer, I developed functional and responsive appointment scheduling webpages tailored to client-specific requirements. These webpages were designed for seamless integration into clients' official websites, enhancing public engagement and accessibility
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>
+
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot sx={{ backgroundColor: '#0f0d2f' }}>
+                                        <img src={magictap} alt='' id='timeline-2-icon-3' />
+                                    </TimelineDot>
+                                    <TimelineConnector />
+                                </TimelineSeparator>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                    <div className='timeline-2-major-1'>
+                                        Magictap Solutions Pvt. Ltd.
+                                    </div>
+
+                                    <div className='timeline-2-minor-1'>
+                                        Operations Executive
+                                    </div>
+
+                                    <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        27<sup>th</sup> May 24 - Present
+                                    </div>
+
+                                    <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
+                                        As an Operations Executive, assuming leadership in diverse areas including frontend development, robotics, AI, AR, and VR training. Gained comprehensive nationwide exposure across various organizational levels. Collaborated closely with the team, providing guidance and support while independently handling tasks as required
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -582,7 +655,7 @@ function Home(props) {
 
                     <div className='exp-info'>
                         <div className='exp-info-section'>
-                            <div className={`exp-info-section-1-${props.isDark ? 'dark' : 'light'}`}>
+                            <div className={`exp-info-section-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
@@ -600,7 +673,7 @@ function Home(props) {
                                 </div>
                             </div>
 
-                            <div className={`exp-info-section-2-${props.isDark ? 'dark' : 'light'}`}>
+                            <div className={`exp-info-section-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
@@ -620,7 +693,7 @@ function Home(props) {
                         </div>
 
                         <div className='exp-info-section'>
-                            <div className={`exp-info-section-3-${props.isDark ? 'dark' : 'light'}`}>
+                            <div className={`exp-info-section-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
@@ -638,7 +711,7 @@ function Home(props) {
                                 </div>
                             </div>
 
-                            <div className={`exp-info-section-4-${props.isDark ? 'dark' : 'light'}`}>
+                            <div className={`exp-info-section-${props.isDark ? 'dark' : 'light'}`}>
                                 <div>
                                     <img
                                         alt=''
@@ -750,7 +823,7 @@ function Home(props) {
                                 target='_blank'
                                 className='contact-info-section'
                                 to='mailto:yashhkumarrrr@gmail.com'
-                                id={`contact-info-section-1-${props.isDark ? 'dark' : 'light'}`}
+                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
                             >
                                 <div>
                                     <img
@@ -766,7 +839,7 @@ function Home(props) {
 
                             <Link
                                 target='_blank'
-                                id={`contact-info-section-2-${props.isDark ? 'dark' : 'light'}`}
+                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
                                 className='contact-info-section'
                                 to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
                             >
@@ -786,7 +859,7 @@ function Home(props) {
                         <div className='contact-info-1'>
                             <Link
                                 target='_blank'
-                                id={`contact-info-section-3-${props.isDark ? 'dark' : 'light'}`}
+                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
                                 className='contact-info-section'
                                 to='https://www.linkedin.com/in/yashhkumarrrr'
                             >
@@ -805,7 +878,7 @@ function Home(props) {
 
                             <Link
                                 target='_blank'
-                                id={`contact-info-section-4-${props.isDark ? 'dark' : 'light'}`}
+                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
                                 className='contact-info-section'
                                 to='https://www.github.com/yashhkumarrrr'
                             >
