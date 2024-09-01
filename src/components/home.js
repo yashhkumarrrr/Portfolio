@@ -4,14 +4,15 @@ import * as yup from 'yup';
 import * as React from 'react';
 import { useFormik } from 'formik';
 import Box from '@mui/material/Box';
+import Zoom from '@mui/material/Zoom';
 import { Link } from 'react-router-dom';
 import Timeline from '@mui/lab/Timeline';
 import Drawer from '@mui/material/Drawer';
 import Switch from '@mui/material/Switch';
 import MuiAlert from '@mui/material/Alert';
+import Tooltip from '@mui/material/Tooltip';
 import { useState, forwardRef } from 'react';
 import Snackbar from '@mui/material/Snackbar';
-import { styled } from '@mui/material/styles';
 import TimelineDot from '@mui/lab/TimelineDot';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
@@ -21,6 +22,7 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -150,6 +152,13 @@ function Home(props) {
         }
         setDrawerBox({ ...drawerBox, [anchor]: open });
     };
+
+    const theme = createTheme({
+        typography: {
+            fontSize: 14,
+            fontFamily: 'Poppins'
+        },
+    });
 
     return (
         <>
@@ -819,80 +828,96 @@ function Home(props) {
 
                     <div className='contact-info'>
                         <div className='contact-info-1'>
-                            <Link
-                                target='_blank'
-                                className='contact-info-section'
-                                to='mailto:yashhkumarrrr@gmail.com'
-                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
-                            >
-                                <div>
-                                    <img
-                                        src={mail}
-                                        alt='GmailLogo'
-                                        className='contact-info-link-img'
-                                    />
-                                </div>
-                                <div className='contact-info-link-txt'>
-                                    Reach me on Email
-                                </div>
-                            </Link>
+                            <ThemeProvider theme={theme}>
+                                <Tooltip TransitionComponent={Zoom} title="Email" disableInteractive>
+                                    <Link
+                                        target='_blank'
+                                        className='contact-info-section'
+                                        to='mailto:yashhkumarrrr@gmail.com'
+                                        id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
+                                    >
+                                        <div>
+                                            <img
+                                                src={mail}
+                                                alt='GmailLogo'
+                                                className='contact-info-link-img'
+                                            />
+                                        </div>
+                                        <div className='contact-info-link-txt'>
+                                            Reach me on Email
+                                        </div>
+                                    </Link>
+                                </Tooltip>
+                            </ThemeProvider>
 
-                            <Link
-                                target='_blank'
-                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
-                                className='contact-info-section'
-                                to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
-                            >
-                                <div>
-                                    <img
-                                        src={whatsapp}
-                                        alt='WhatsAppLogo'
-                                        className='contact-info-link-img'
-                                    />
-                                </div>
-                                <div className='contact-info-link-txt'>
-                                    Contact me on WhatsApp
-                                </div>
-                            </Link>
+                            <ThemeProvider theme={theme}>
+                                <Tooltip TransitionComponent={Zoom} title="WhatsApp" disableInteractive>
+                                    <Link
+                                        target='_blank'
+                                        id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
+                                        className='contact-info-section'
+                                        to={`https://api.whatsapp.com/send?phone=${+918826367476}`}
+                                    >
+                                        <div>
+                                            <img
+                                                src={whatsapp}
+                                                alt='WhatsAppLogo'
+                                                className='contact-info-link-img'
+                                            />
+                                        </div>
+                                        <div className='contact-info-link-txt'>
+                                            Contact me on WhatsApp
+                                        </div>
+                                    </Link>
+                                </Tooltip>
+                            </ThemeProvider>
                         </div>
 
                         <div className='contact-info-1'>
-                            <Link
-                                target='_blank'
-                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
-                                className='contact-info-section'
-                                to='https://www.linkedin.com/in/yashhkumarrrr'
-                            >
-                                <div>
-                                    <img
-                                        src={linkedin}
-                                        alt='LinkedInLogo'
-                                        className='contact-info-link-img'
-                                    />
-                                </div>
+                            <ThemeProvider theme={theme}>
+                                <Tooltip TransitionComponent={Zoom} title="LinkedIn" disableInteractive>
+                                    <Link
+                                        target='_blank'
+                                        id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
+                                        className='contact-info-section'
+                                        to='https://www.linkedin.com/in/yashhkumarrrr'
+                                    >
+                                        <div>
+                                            <img
+                                                src={linkedin}
+                                                alt='LinkedInLogo'
+                                                className='contact-info-link-img'
+                                            />
+                                        </div>
 
-                                <div className='contact-info-link-txt'>
-                                    Make me your Connection
-                                </div>
-                            </Link>
+                                        <div className='contact-info-link-txt'>
+                                            Make me your Connection
+                                        </div>
+                                    </Link>
+                                </Tooltip>
+                            </ThemeProvider>
 
-                            <Link
-                                target='_blank'
-                                id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
-                                className='contact-info-section'
-                                to='https://www.github.com/yashhkumarrrr'
-                            >
-                                <div>
-                                    <img
-                                        src={github}
-                                        alt='GitHubLogo'
-                                        className='contact-info-link-img'
-                                    />
-                                </div>
-                                <div className='contact-info-link-txt'>
-                                    Follow me on Github
-                                </div>
-                            </Link>
+                            <ThemeProvider theme={theme}>
+                                <Tooltip TransitionComponent={Zoom} title="GitHub" disableInteractive>
+                                    <Link
+                                        target='_blank'
+                                        id={`contact-info-section-${props.isDark ? 'dark' : 'light'}`}
+                                        className='contact-info-section'
+                                        to='https://www.github.com/yashhkumarrrr'
+                                    >
+                                        <div>
+                                            <img
+                                                src={github}
+                                                alt='GitHubLogo'
+                                                className='contact-info-link-img'
+                                            />
+                                        </div>
+                                        <div className='contact-info-link-txt'>
+                                            Follow me on Github
+                                        </div>
+                                    </Link>
+                                </Tooltip>
+                            </ThemeProvider>
                         </div>
                     </div>
                 </div>

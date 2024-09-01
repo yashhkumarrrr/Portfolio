@@ -1004,6 +1004,10 @@
     background-color: #ff0000;
 }
 
+.contact-form-btn:active {
+    background-color: #b12828;
+}
+
 .contact-form-error {
     font-size: 12px;
     color: #ff0000;
@@ -1089,6 +1093,13 @@
         -2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.contact-info-section:hover {
+    .contact-info-link-img {
+        height: 100px;
+        transition: height 0.3s;
+    }
+}
+
 #contact-info-section-light {
     color: #000000;
     background-color: #d7d7d7;
@@ -1101,7 +1112,6 @@
 
 .contact-info-link-img {
     height: 80px;
-    pointer-events: none;
 }
 
 .contact-info-link-txt {
