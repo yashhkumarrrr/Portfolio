@@ -226,6 +226,10 @@
     background-color: #ff0000;
 }
 
+#home-div-1-4-link:active {
+    background-color: #ad0d0d;
+}
+
 .home-div-2 {
     user-select: none;
 }
@@ -468,6 +472,10 @@
     border-radius: 50px;
     text-decoration: none;
     background-color: #ff0000;
+}
+
+.about-resume-btn:active {
+    background-color: #ad0d0d;
 }
 
 @media (max-width: 800px) {
@@ -1005,6 +1013,10 @@
 }
 
 .contact-form-btn:active {
+    background-color: #ad0d0d;
+}
+
+.contact-form-btn:active {
     background-color: #b12828;
 }
 
@@ -1093,13 +1105,6 @@
         -2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.contact-info-section:hover {
-    .contact-info-link-img {
-        height: 100px;
-        transition: height 0.3s;
-    }
-}
-
 #contact-info-section-light {
     color: #000000;
     background-color: #d7d7d7;
@@ -1116,6 +1121,13 @@
 
 .contact-info-link-txt {
     padding: 10px;
+}
+
+.contact-info-section:hover {
+    .contact-info-link-img {
+        height: 90px;
+        transition: height 0.5s;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -1142,8 +1154,9 @@
 
 .footer {
     padding: 3px;
+    display: flex;
+    justify-content: center;
     font-size: 0.9rem;
-    text-align: center;
     font-family: 'Poppins';
 }
 

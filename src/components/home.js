@@ -173,11 +173,15 @@ function Home(props) {
                                 href='#home'
                                 aria-label="Home"
                             >
-                                <img
-                                    alt='Logo'
-                                    src={logo}
-                                    className='header-logo'
-                                />
+                                <ThemeProvider theme={theme}>
+                                    <Tooltip TransitionComponent={Zoom} title="Yash" disableInteractive>
+                                        <img
+                                            alt='Logo'
+                                            src={logo}
+                                            className='header-logo'
+                                        />
+                                    </Tooltip>
+                                </ThemeProvider>
                             </a>
                         </div>
 
@@ -305,13 +309,13 @@ function Home(props) {
                             <div
                                 id={`home-div-1-1-${props.isDark ? 'dark' : 'light'}`}
                             >
-                                Hello, my name is
+                                Heyy, I'm
                             </div>
 
                             <div
                                 id='home-div-1-2'
                             >
-                                Yash Kumar
+                                Yash
                             </div>
 
                             <div
@@ -477,29 +481,28 @@ function Home(props) {
                                     sx={{ m: 'auto 0' }}
                                 >
                                     <div className='timeline-1-minor-1'>
-                                        Analyst
+                                        Operations Executive
                                     </div>
 
                                     <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
+                                        27<sup>th</sup> May 24 - Present
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
-                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
-                                        <img src={djb} alt='' id='timeline-1-icon-2' />
+                                    <TimelineDot sx={{ backgroundColor: '#0f0d2f' }}>
+                                        <img src={magictap} alt='' id='timeline-1-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
-
-                                <TimelineContent sx={{ py: '20px', px: 2 }}>
+                                <TimelineContent sx={{ py: '30px', px: 2 }}>
                                     <div className='timeline-1-major-1'>
-                                        Delhi Jal board
+                                        Magictap Solutions Pvt. Ltd.
                                     </div>
 
                                     <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        As an Analyst, I conducted data integrity checks on government servers. Additionally, I engaged with consumers to gather feedback on service-related issues. These insights informed recommendations for enhancing the consumer experience.
+                                        As an Operations Executive, assuming leadership in diverse areas including frontend development, robotics, AI, AR, and VR training. Gained comprehensive nationwide exposure across various organizational levels. Collaborated closely with the team, providing guidance and support while independently handling tasks as required
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -542,28 +545,29 @@ function Home(props) {
                                     sx={{ m: 'auto 0' }}
                                 >
                                     <div className='timeline-1-minor-1'>
-                                        Operations Executive
+                                        Analyst
                                     </div>
 
                                     <div className={`timeline-1-minor-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        27<sup>th</sup> May 24 - Present
+                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
                                     </div>
                                 </TimelineOppositeContent>
 
                                 <TimelineSeparator>
                                     <TimelineConnector />
-                                    <TimelineDot sx={{ backgroundColor: '#0f0d2f' }}>
-                                        <img src={magictap} alt='' id='timeline-1-icon-1' />
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                        <img src={djb} alt='' id='timeline-1-icon-2' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
-                                <TimelineContent sx={{ py: '30px', px: 2 }}>
+
+                                <TimelineContent sx={{ py: '20px', px: 2 }}>
                                     <div className='timeline-1-major-1'>
-                                        Magictap Solutions Pvt. Ltd.
+                                        Delhi Jal board
                                     </div>
 
                                     <div className={`timeline-1-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        As an Operations Executive, assuming leadership in diverse areas including frontend development, robotics, AI, AR, and VR training. Gained comprehensive nationwide exposure across various organizational levels. Collaborated closely with the team, providing guidance and support while independently handling tasks as required
+                                        As an Analyst, I conducted data integrity checks on government servers. Additionally, I engaged with consumers to gather feedback on service-related issues. These insights informed recommendations for enhancing the consumer experience.
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -581,27 +585,27 @@ function Home(props) {
                         >
                             <TimelineItem>
                                 <TimelineSeparator>
-                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
-                                        <img src={djb} alt='' id='timeline-2-icon-1' />
+                                    <TimelineDot sx={{ backgroundColor: '#0f0d2f' }}>
+                                        <img src={magictap} alt='' id='timeline-2-icon-3' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
 
                                 <TimelineContent sx={{ py: '20px', px: 2 }}>
                                     <div className='timeline-2-major-1'>
-                                        Delhi Jal Board
+                                        Magictap Solutions Pvt. Ltd.
                                     </div>
 
                                     <div className='timeline-2-minor-1'>
-                                        Analyst
+                                        Operations Executive
                                     </div>
 
                                     <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
+                                        27<sup>th</sup> May 24 - Present
                                     </div>
 
                                     <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        As an Analyst, I conducted data integrity checks on government servers. Additionally, I engaged with consumers to gather feedback on service-related issues. These insights informed recommendations for enhancing the consumer experience.
+                                        As an Operations Executive, assuming leadership in diverse areas including frontend development, robotics, AI, AR, and VR training. Gained comprehensive nationwide exposure across various organizational levels. Collaborated closely with the team, providing guidance and support while independently handling tasks as required
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -635,27 +639,27 @@ function Home(props) {
 
                             <TimelineItem>
                                 <TimelineSeparator>
-                                    <TimelineDot sx={{ backgroundColor: '#0f0d2f' }}>
-                                        <img src={magictap} alt='' id='timeline-2-icon-3' />
+                                    <TimelineDot sx={{ backgroundColor: '#0095c6' }}>
+                                        <img src={djb} alt='' id='timeline-2-icon-1' />
                                     </TimelineDot>
                                     <TimelineConnector />
                                 </TimelineSeparator>
 
                                 <TimelineContent sx={{ py: '20px', px: 2 }}>
                                     <div className='timeline-2-major-1'>
-                                        Magictap Solutions Pvt. Ltd.
+                                        Delhi Jal Board
                                     </div>
 
                                     <div className='timeline-2-minor-1'>
-                                        Operations Executive
+                                        Analyst
                                     </div>
 
                                     <div className={`timeline-2-minor-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        27<sup>th</sup> May 24 - Present
+                                        31<sup>st</sup> Dec 21 - 14<sup>th</sup> Jan 22
                                     </div>
 
                                     <div className={`timeline-2-major-2-${props.isDark ? 'dark' : 'light'}`}>
-                                        As an Operations Executive, assuming leadership in diverse areas including frontend development, robotics, AI, AR, and VR training. Gained comprehensive nationwide exposure across various organizational levels. Collaborated closely with the team, providing guidance and support while independently handling tasks as required
+                                        As an Analyst, I conducted data integrity checks on government servers. Additionally, I engaged with consumers to gather feedback on service-related issues. These insights informed recommendations for enhancing the consumer experience.
                                     </div>
                                 </TimelineContent>
                             </TimelineItem>
@@ -692,11 +696,11 @@ function Home(props) {
                                 </div>
 
                                 <div className='exp-info-txt'>
-                                    3
+                                    6+
                                 </div>
 
                                 <div>
-                                    Internships
+                                    Experience (Months)
                                 </div>
                             </div>
                         </div>
@@ -925,13 +929,22 @@ function Home(props) {
                 {/* Footer */}
 
                 <div className='footer'>
-                    Developed by -&nbsp;
-                    <a
-                        id='footer-link'
-                        href='#home'
-                    >
-                        yashhkumarrrr
-                    </a>
+                    <div>
+                        Developed by -&nbsp;
+                    </div>
+                    
+                    <div>
+                        <a
+                            id='footer-link'
+                            href='#home'
+                        >
+                            <ThemeProvider theme={theme}>
+                                <Tooltip TransitionComponent={Zoom} title="Yash" disableInteractive>
+                                    <div>yashhkumarrrr</div>
+                                </Tooltip>
+                            </ThemeProvider>
+                        </a>
+                    </div>
                 </div>
 
                 <Snackbar open={isSnackbarOpen} autoHideDuration={1500} onClose={closeSnackbar}>
